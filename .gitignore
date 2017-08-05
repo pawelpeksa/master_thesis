@@ -1,0 +1,7 @@
+*
+!*.tex
+!*.bia
+!.gitignore
+!res
+!res/*
+res/.*
