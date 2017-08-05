@@ -1,7 +1,5 @@
 # master_thesis
-Master thesis. Topic: (Optimalization of the machine learning algorithms for the low statistics training samples)
-
-Text in Polish:
+Master thesis. Topic:Optimalization of the machine learning algorithms for the low statistics training samples (Text in Polish)
 
 Realated repos with code:
 
