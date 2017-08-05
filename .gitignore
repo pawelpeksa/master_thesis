@@ -1,6 +1,7 @@
 *
 !*.tex
 !*.bib
+!*.sh
 !.gitignore
 !res
 !res/*
