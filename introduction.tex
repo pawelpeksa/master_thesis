@@ -1,24 +1,30 @@
 \section{Wprowadzenie}
 \subsection{Przedmiot pracy}
-Uczenie maszynowe jest dziedziną informatyki zajmującą się tworzeniem systemów zdolnych do uczenia się. Należy jednak pamiętać,  że nie jest to nauka, która przebiega tak samo jak w przypadku człowieka. Systemy samouczące zaprogramowane są do wykonywania konkretnego zadania i nie są zdolne wyjść poza te ramy. 
-
-
-
- Do tej pory powstało wiele algorytmów, które pozwalają na stworzenie programów komputerowych, które są w stanie uczyć się na różne sposoby. Wyróżnia się przede wszystkim dwa podstawowe rodzaje algorytmów uczenia maszynowego:
+% http://www.cs.put.poznan.pl/jstefanowski/ml/NEWML_W1lastr.pdf
+% https://en.wikipedia.org/wiki/Computational_intelligence#Difference_between_Computational_and_Artificial_Intelligence
+% https://books.google.ch/books?hl=en&lr=&id=IZosIcgJMjUC&oi=fnd&pg=PR7&dq=Computational+intelligence&ots=Dwfvy8GnKp&sig=fxvdqBnSEo4YaAU9S3q9XaUUbas#v=onepage&q=Computational%20intelligence&f=false
+Uczenie maszynowe jest dziedziną informatyki zajmującą się tworzeniem systemów zdolnych do uczenia się. Pozwala to na wykonywanie konkretnego zadania przez dany system bez koniecznosci jednoznacznego programowania go. 
+Często określane jest jako obszar sztucznej inteligencji lub tez inteligencji obliczeniowej. Obecnie znajduje zastosowanie w wielu dziedzinach naszego codziennego życia z czego często nawet możemy nie zdawać sobie sprawy.
+Najpopluarniejsze obszary wykorzystania uczenia maszynowego pojawiaja sie tam, gdzie standardowe algorytmy zawodza. Wielokrotnie zwiazane jest to tez z trudnoscia matematycznego zdefiniowania problemu. 
+ Do tej pory powstało wiele algorytmów, które pozwalają na tworzenie programów komputerowych, które są w stanie uczyć się na różne sposoby. Wyróżnia się przede wszystkim dwa podstawowe rodzaje algorytmów uczenia maszynowego:
 \begin{itemize}
 \item uczenie z nauczycielem (uczenie nadzorowane)
 \item uczenie bez nauczyciela (uczenie nienazdorowane)
 \end{itemize}
-Niniejsza praca skupia się na uczeniu maszynowym z nauczycielem. W celu przeprowadzeniu takiego uczenia istnieje potrzeba posiadania danych dzięki którym dany algorytm stopniowo staje się zdolny do rozwiązania zadanego mu problemu.
-
-W kolejnych rozdziałach zostały opisane niezbędne podstawy teoretyczne bla bla
-\subsection{Problematyka pracy}
-Temat niniejszej pracy mówi o uczeniu maszynowym przy niskiej statystyce próbek danych. W pierwszym momencie mogłoby się zdawać, że we wspołczesnym świecie nie spotkamy się już z tym problemem. Ilość danych składowanych przez człowieka wzrasta w tempie eksponencjalnym. W wielu spotykanch problemach mamy doczynienia z danym liczącym tysiące, dziesiątki tysięcy czy nawet miliony rekordów. Istnieją jednak sytuacje w których ilość danych może stanowić problem. Wspomnieć można przynajmniej kilka takich dziedzin:
+Temat pracy mówi o uczeniu maszynowym przy niskiej statystyce próbek danych. Implikuje to fakt, ze autor skupia się na uczeniu maszynowym z nauczycielem. W celu przeprowadzeniu takiego uczenia istnieje potrzeba posiadania danych dzięki którym dany algorytm stopniowo staje się zdolny do rozwiązania zadanego mu problemu.
+ W pierwszym momencie mogłoby się zdawać, że we wspołczesnym świecie nie spotkamy się już z tym problemem. Ilość danych składowanych przez człowieka wzrasta w tempie eksponencjalnym. W wielu spotykanch problemach mamy doczynienia z danym liczącym tysiące, dziesiątki tysięcy czy nawet miliony rekordów. Istnieją jednak sytuacje w których ilość danych może stanowić problem. Wspomnieć można przynajmniej kilka takich dziedzin:
 \begin{itemize}
 \item medycyna - w tym przypadku możemy mieć doczynienia z sytuacją, kiedy dane pochodzą z pewnego rodzaju badania, które nie zostało do tej pory wykonane na wielu pacjentach i/lub jego wykonanie nie jest proste oraz powszechne
 \item specjalistyczne zastosowania biznesowe
 \item rzadko występujące zjawiska np. trzęsienia ziemi, powodzie
-\item szeregi czasowe  zwłaszcza w sytuacji gdy mamy doczynienia z szeregiem czasowym o dużym okresie np. miesiąc czy rok
+\item szeregi czasowe  zwłaszcza w sytuacji gdy mamy doczynienia z szeregiem czasowym o dużym okresie np. miesiąc czy rok (w ktorym wartosc jest mierzona w duzych odstepach czasowych np. miesiac czy rok)
 
 %źródło: https://medium.com/rants-on-machine-learning/what-to-do-with-small-data-d253254d1a89
+
+W kolejnych rozdziałach zostały opisane niezbędne podstawy teoretyczne, które pozwalaja zrozumiec postawione zadanie oraz proponowane rozwiazania. W rodzialach \ref{nana} przedstawione zostaly kolejno wyniki oraz wnioski wyciagniete 
+na podstawie wynikow, przeprowadzonych obliczen oraz doswiadczen autora zdobytych podczas tworzenia kolejnych programow.
+
+
+\subsection{Problematyka i cel pracy}
+
 \end{itemize}
