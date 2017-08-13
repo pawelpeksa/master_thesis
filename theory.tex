@@ -12,7 +12,7 @@ Ogólnie możemy powiedzieć, że zadaniem algorytmu jest znalezienie takiej fun
 \begin{equation}
 d = (x_1,y_1), (x_2, y_2), ..., (x_n, y_n).
 \end{equation}
-Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. 
+Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensamble}.
 %W tej pracy wszystkie metody optymalizacji były analizowane pod kątem problemu klasyfikacji lecz naturalne jest ich użycie w przypadku problemu regresji.
 
 \subsection{Wykorzystane algorytmy}
@@ -24,8 +24,8 @@ Drzewo decyzyjne jest algorytmem uczenia maszynowego, który może posłużyć w
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.4]{res/dt1.png}
-\caption[Caption for LOF]{Przykład drzewa decyzyjnego\label{dt1image}}
+\includegraphics[scale=0.6]{res/dt1.png}
+\caption[Caption for LOF]{Przykład drzewa decyzyjnego.\label{dt1image}}
 % \caption{Matematyczny model neuronu\label{neuron} Źródło:\footnote{aa} } 
 \end{figure} 
 
@@ -39,8 +39,62 @@ Istnieją różne sposoby na stworzenie drzewa klasyfikacyjnego. Jednym z nich j
 Warunkiem końca algorytmu może być sytuacja w której wszystkie stworzone podzbiory są jednorodne lub też moment, gdy dotarliśmy do maksymalnej głębokości drzewa. Każdy podzbiór oznacza kolejną gałąź w drzewie, co powoduje wzrost drzewa. Gdy drzewo jest zbyt duże, staję się ono zbyt skomplikowane i podatne na przeuczenie(\textit{overfitting}). Jednym z parametrów drzewa decyzyjnego, który należy określić jest właśnie jego maksymalna głębokość, która pozwala stworzyć optymalne drzewo. Wspomniany problem przeuczenia został opisany w podrozdziale \ref{problems}. 
 
 \subsubsection{Las drzew decyzyjnych}
+%http://jair.org/media/614/live-614-1812-jair.pdf
+Las drzew decyzyjnych(\textit{Random forest}) powstał na podstawie idei tworzenia silnego klasyfikatora na podstawie $n$ słabych klasyfikatorów tego samego typu. Podejście to w literaturze określane jest jako \textit{ensable learning}. Szczególnym przypadkiem tego podejścia jest tzw. \textit{bagging}\cite{gonczarek}. Koncepcję \textit{ensable learning} można zobrazować przedstawiając wiele wielomianów, które nie modelują zbyt dobrze funkcji $f$, lecz ich uśrednianie już realizuje to znacznie lepiej, co zostało przedstawione na rysunku \ref{avg1}.  W przypadku uczenia klasyfikatora typu \textit{bagging} tworzymy $m$ klasyfikatorów, każdy z nich uczymy używając $N$ rekordów, który losujemy z powtórzeniami korzystając ze zbioru danych o rozmiarze $N$. Implikuje to fakt, że niektóre ze słabych klasyfikatorów uczone będą na przykładach, które się powtarzają lub niektóre z przykładów w ogóle nie zostaną wzięte pod uwagę. Poszczególne klasyfikatory z pewnością będą cechowały się mniejszą skutecznością jeśli chodzi o klasyfikację, ale ich uśredniony wynik zazwyczaj daje lepsze rezultaty. Wykorzystanie sprawdza się najczęściej w przypadku niestabilnych algorytmów uczenia maszynowego do których zaliczyć też można drzewa decyzyjne\cite{ensable}. Duża zaletą algorytmów typu \textit{bagging} jest fakt, iż ich zrównoleglanie jest bardzo naturalne.
+W przypadku lasu drzew decyzyjnych, jak nazwa wskazuje, mamy do czynienia z zespołem słabych klasyfikatorów, które są drzewami decyzyjnymi. Dodatkowo, w celu uczenia poszczególnych drzew, wykorzystujemy tylko $M$ atrybutów zbioru uczącego. Przy czym zaleca się, aby $M=\sqrt{K}$, zakładając, że $K$ oznacza liczbę wszystkich atrybutów zbioru uczącego. Podstawowymi parametrami lasu drzew decyzyjnych, które należy wyznaczyć jest liczba słabych klasyfikatorów wchodzących w skład klasyfikatora oraz maksymalna głębokość wykorzystanych drzew decyzyjnych.
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{res/avg1.png}
+\caption[Caption for LOF]{Ilistracja działania \textit{ensamble learning} TODO:Podać źródło?\label{avg1}}
+\end{figure} 
+
 \subsubsection{Maszyna wektorow nosnych}
+Maszyna wektorów wspierających (\textit{support vector machine - SVM}) jest modelem matematycznym, który z powodzeniem znajduje swoje zastosowaniu w klasyfikacji oraz regresji. Jej idea jest z jednej strony dość prosta, natomiast z drugiej sprawdza się w dość skomplikowanych problemach\cite{svm1}. Na rysunku \ref{svmIdea} przedstawiona został pomysł, który kryje się za tym algorytmem. Celem jego działania jest znalezienie hiperpłaszczyzny, która dzieli dane wg klas w optymalny sposób. W tym celu, wybierana jest hiperpłaszczyzna, która dzieli dane na dwie klasy zachowując przy tym jak największą odległość od punktów obu tych klas\cite{svm2}. Podstawowa wersja tego algorytmu zapewnia tylko klasyfikacje binarną tzn. taką w przypadku której mamy tylko dwie klasy. W celu rozszerzenia jego działania, istnieją dwa popularne podejścia  tj. \textit{one against one} oraz \textit{one against all}\cite{svm3}. W niniejszej pracy wykorzystane zostało pierwsze z nich, które polega na stworzeniu maszyny wektorów wspierających dla każdej pary klas. Wynika z tego, że konieczne jest stworzenie $K(K-1)/2$ maszyn, zakładając, że $K$ oznacza liczbę atrybutów analizowanego zbioru danych. Ostatecznie, klasa dla konkretnego rekordu danych określana jest poprzez ,,głosowanie''. Ostatnią podstawową kwestią, którą należałoby wyjaśnić, jest pytanie jak \textit{SVM} radzi sobie w przypadku, gdy dane nie są separowalne liniowo, przy których jest również wielokrotnie wykorzystywana. W takiej sytuacji wykorzystana jest transformacja danych, które pozwala na przedstawienie je w przestrzeni w której są one separowalne liniowo. Zobrazowanie tego rozwiązania przedstawia rysunek \ref{svmKernel}. Algorytm dąży do maksymalizacji odległości marginesu, który powstaje podczas dobierania hiperpłaszczyzny (patrz rys \ref{svmIdea}. W wielu przypadkach nie jest możliwe dobranie takiej hiperpłaszczyzny, która dokładnie podzieli dane. Rozwiązaniem w tej sytuacji jest dodanie dodatkowego współczynnika $C$, który dodatkowo uwzględniany jest w procesie optymalizacji. Wartość $C$ stanowi o tym jak duży wpływ na optymalizację mają niepoprawnie sklasyfikowane przykłady w procesie maksymalizacji marginesu i jest jednym z parametrów modelu, który należy wyznaczyć w celu otrzymania najbardziej optymalnego klasyfikatora.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{res/svm1.png}
+\caption[Caption for LOF]{Rysunek przedstawiający ideę maszyny wektorów wspierających. Źródło:\cite{svm2} \label{svmIdea}}
+\end{figure} 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.6]{res/svm2.png}
+\caption[Caption for LOF]{Rysunek przedstawiający ideę transformowania danych do przestrzeni w której są one liniowo separowalne. Źródło:\cite{svmKernel} \label{svmKernel}}
+\end{figure} 
+
 \subsubsection{Tradycyjne sieci neuronowe}
+Niniejszy podrozdział powstał na podstawie pracy \cite{tadeusiewicz}. Sztuczna sieć neuronowa, dalej nazywana siecią neuronową, jest metodę uczenia maszynowego, którego inspiracją była biologia, a konkretnie ludzki mózg i występujące w nim biologiczne sieci neuronowe. Podstawową odmianą sieci neuronowej jest sieć jednokierunkowa, czyli taka w której nie występują sprzężenia zwrotne. Podstawową jednostką budulcową tego modelu jest neuron, który przedstawiony został na rysunku \label{neuron}. Pojedynczy neuronu wykonuje operację sumy ważonej korzystając z wartości na swoich wejściach oraz wagi przypisanej do każdego wejścia. Wyjście z kolei jest wynikiem zastosowania tzw. funkcji aktywacji na wyniku uprzednio otrzymanym z operacji sumy ważonej. Najpopularniejszymi funkcjami aktywacji w tradycyjnych sieciach neuronowych są funkcja sigmoidalna oraz  tangensoidalna.
+ 
+\begin{figure}[ht!]
+\centering
+\includegraphics{res/neuron.png}
+\caption[Caption for LOF]{TODO:footnotetext on wrong page Matematyczny model neuronu\label{neuron}\footnotemark}
+% \caption{Matematyczny model neuronu\label{neuron} Źródło:\footnote{aa} } 
+\end{figure} 
+\footnotetext{\url{http://pl.wikipedia.org/wiki/Plik:
+Neuron_McCullocha-Pittsa.png}}
+
+
+Cała sieć neuronowa jest niczym innym niż połączonymi ze sobą neuronami. Każdemu połączeniu przypisana jest waga liczbowa, która informuje o tym jak wpływają na siebie poszczególne komórki sieci. Wszystkie neurony zgrupowaną są w warstwy z których możemy wyróżnić:
+\begin{itemize}
+\item warstwę wejściową
+\item jedną lub więcej warstw ukrytych
+\item warstwę wyjściową
+\end{itemize}
+
+W każdej warstwie może znajdować się dowolna ilość neuronów. Przykład sieci neuronowej został przedstawiony na rysunku \label{net}.
+
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z 
+\includegraphics{res/exampleNet.png}
+\caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa\label{net}\footnotemark} 
+\end{figure}
+
+\footnotetext{\url{https://2ml4pa.bn1303.livefilestore.com/y2p6no6Dn0weHW3FG9tceTUS9lohx5ldcxvFZRhKdbeFQi2kntad_77gKeKIC-INcsFRCvGI-_DY9lMdZzaX8jkSHDvqlcT3qRnftpAt7esi4s/1.PNG?psid=1}}
+
+W każdej iteracji uczenia sieci, na wejście podawany są dane. W zależności o odpowiedzi otrzymanej przez sieć przeprowadzana jest poprawa wag. Po przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby poprawnie odpowiadać na kolejne sygnały wejściowe. W ogólności mówimy o minimalizacji błędu sieci $Q$ w zależności od wag sieci. W równaniu aktualizującym wagi występuję również współczynnik $\eta$, który jest tzw. współczynnikiem uczenia, który zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z parametrów modelu, który należy wyznaczyć. Kolejnym z parametrów tego modelu jest liczba neuronów w warstwie ukrytej. Liczba neuronów w warstwie wejściowej zależy od liczby atrybutów naszych danych, natomiast wyjściowej od tego na ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o jednej warstwie. W celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od warstwy wyjściowej. Dla neuronów w warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do których dany neuron wysłał swój sygnał.
 \subsubsection{Glebokie sieci neuronowe}
 \subsection{Wykorzystane metody optymalizacji}
 \subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
