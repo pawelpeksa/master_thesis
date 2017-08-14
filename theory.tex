@@ -1,7 +1,7 @@
 \section{Wstep teoretyczny} \label{theory}
 W kolejnych podrozdziałach opisane są krótko podstawy teoretyczne dotyczące uczenia maszynowego, wykorzystanych algorytmów oraz użytych metod optymalizacji.
 \subsection{Formalny opis uczenia maszynowego}
-Formalną definicję uczenia maszynowego podał Tom Mitchell, która brzmi następująco: ,,Mówimy, że maszyna uczy się zadania $T$ w oparciu o doświadczenie $E$ i miarę jakości $P$, jeśli wraz z przyrostem doświadczenia $E$ poprawia się jakość wykonywanego zadania $T$ mierzona przez miarę $P$.''\cite{mitchel} Przykładowo można wymienić trójkę $T$, $E$, $P$ jako diagnozowanie pacjenta na podstawie symptomów, dotychczasowe  liczba wykonanych przez maszynę diagnoz (poprawnie lub nie),  poprawność diagnozowania na podstawie do tej pory niespotkanych przypadków. Powyższe przykłady można mnożyć. Zapis formalny (na podstawie \cite{formal2}) w przypadku algorytmów przedstawionych w nieniejszej pracy możemy przedstawić następująco:
+Uczenie maszynowe okreslane jest jako jedna z galezi sztucznej inteligencji \cite{dnn1}. Formalną definicję podał Tom Mitchell, która brzmi następująco: ,,Mówimy, że maszyna uczy się zadania $T$ w oparciu o doświadczenie $E$ i miarę jakości $P$, jeśli wraz z przyrostem doświadczenia $E$ poprawia się jakość wykonywanego zadania $T$ mierzona przez miarę $P$.''\cite{mitchel} Przykładowo można wymienić trójkę $T$, $E$, $P$ jako diagnozowanie pacjenta na podstawie symptomów, dotychczasowe  liczba wykonanych przez maszynę diagnoz (poprawnie lub nie),  poprawność diagnozowania na podstawie do tej pory niespotkanych przypadków. Powyższe przykłady można mnożyć. Zapis formalny (na podstawie \cite{formal2}) w przypadku algorytmów przedstawionych w nieniejszej pracy możemy przedstawić następująco:
 \begin{itemize}
 \item $x$ - dane wejściowe algorytmu
 \item $y$ - wyjście algorytmu
@@ -96,6 +96,9 @@ W każdej warstwie może znajdować się dowolna ilość neuronów. Przykład si
 
 W każdej iteracji uczenia sieci, na wejście podawany są dane. W zależności o odpowiedzi otrzymanej przez sieć przeprowadzana jest poprawa wag. Po przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby poprawnie odpowiadać na kolejne sygnały wejściowe. W ogólności mówimy o minimalizacji błędu sieci $Q$ w zależności od wag sieci. W równaniu aktualizującym wagi występuję również współczynnik $\eta$, który jest tzw. współczynnikiem uczenia, który zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z parametrów modelu, który należy wyznaczyć. Kolejnym z parametrów tego modelu jest liczba neuronów w warstwie ukrytej. Liczba neuronów w warstwie wejściowej zależy od liczby atrybutów naszych danych, natomiast wyjściowej od tego na ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o jednej warstwie. W celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od warstwy wyjściowej. Dla neuronów w warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do których dany neuron wysłał swój sygnał.
 \subsubsection{Glebokie sieci neuronowe}
+Niniejszy rozdzial zostal napisane na podstawie\cite{dnn1}.
+% https://stats.stackexchange.com/questions/182734/what-is-the-difference-between-a-neural-network-and-a-deep-neural-network
+% https://arxiv.org/pdf/1703.09039.pdf
 \subsection{Wykorzystane metody optymalizacji}
 \subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
 \subsubsection{Sztuczne powiekszanie zbioru danych}
