@@ -102,10 +102,6 @@ Niniejszy rozdzial zostal napisany na podstawie\cite{dnn1}.\\
 % https://arxiv.org/pdf/1703.09039.pdf
 Ideą stojącą za głębokimi sieciami neuronowymi jest tworzenie sieci, które posiadają wiele warstw ukrytych. Wiele, to znaczy od kilku do nawet kilku tysięcy. W tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a bardzo często tylko jedna. Udowodnione zostało matematycznie, że sieć o takiej strukturze jest zdolna do modelowania jakiejkolwiek funkcji pod warunkiem występowania w niej nieliniowych funkcji aktywacji w neuronach. W przypadku tradycyjnych sieci neuronowych na wejście sieci podawane są atrybuty, które należy samemu określić. Są to wyznaczone matematycznie cechy w zależności od problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na obrazie. Do sieci neuronowej możemy podać w takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że sieć miałaby bardzo dużo wejść, a co za tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na obrazie linii lub okręgów oraz wiele więcej. Przy operacji ekstrakcji cech z obrazu następuję naturalnie pewna utrata informacji. W przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na wejście sieci podawany są dane w stanie ,,surowym''. Pozwala to na uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz dobrze zbudowanej sieci pozwala na znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na rysunku \ref{dnnDiff}.
 
-\subsubsection{Konwolucyjne sieci neuronowe}
-Niniejszy rozdział został napisany na podstawie\cite{nielsen}.\\
-Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neuronowych. Znajdują swoje zastosowanie wszędzie, gdzie możemy zetknąć się z potrzebą analizy obrazów. Ich nazwa wynika wynika z faktu, iż bazują one na operacji konwolucji. W przypadku tradycyjnych sieci neuronowych, w sytuacji analizy obrazu bez ówczesnej ekstrakcji cech, należałoby podać na każde wejście sieci wartość pojedynczego piksela. Problemem tego podejścia jest to, że nie jest brana pod uwagę przestrzenna natura obrazu. Każde wejście sieci traktowane jest indywidualnie i nie jest ważne jego położenie na obrazie.  Konwolucyjne sieci neuronowe wykorzystują przestrzenną naturę obrazu. Ich architektura jest do tego dostosowana. Głównymi elementem sieci tego typu odróżniającymi je od tradycyjnych jest istnienie warstw konwolucyjnej.
-
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
@@ -113,6 +109,44 @@ Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neur
 \caption[Caption for LOF]{Różnica tradycyjnych sieci neuronowych oraz głębokich sieci neuronowych w kontekście ekstrakcji cech\label{dnnDiff}\footnotemark} 
 \end{figure}
 \footnotetext{\url{https://hackernoon.com/log-analytics-with-deep-learning-and-machine-learning-20a1891ff70e}}
+
+\subsubsection{Konwolucyjne sieci neuronowe}
+Niniejszy rozdział został napisany na podstawie\cite{nielsen}.\\
+Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neuronowych. Znajdują swoje zastosowanie wszędzie, gdzie możemy zetknąć się z potrzebą analizy obrazów. Ich nazwa wynika wynika z faktu, iż bazują one na operacji konwolucji. W przypadku tradycyjnych sieci neuronowych, w sytuacji analizy obrazu bez ówczesnej ekstrakcji cech, należałoby podać na każde wejście sieci wartość pojedynczego piksela. Problemem tego podejścia jest to, że nie jest brana pod uwagę przestrzenna natura obrazu. Każde wejście sieci traktowane jest indywidualnie i nie jest ważne jego położenie na obrazie.  Konwolucyjne sieci neuronowe wykorzystują przestrzenną naturę obrazu. Ich architektura jest do tego dostosowana. Głównymi elementem sieci tego typu odróżniającymi je od tradycyjnych jest istnienie warstw konwolucyjnej. W przypadku tradycyjnych sieci neuronowych, zazwyczaj wyobrażamy sobie warstwę jako pojedyncza linie neuronów. Dla warstwy konwolucyjnej, bardziej naturalne jest jej przedstawienie w dwóch wymiarach.
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z 
+\includegraphics[scale=0.6]{res/cnn1.png}
+\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w dwóch wymiarach. Źródło:\cite{nielsen}\label{cnn1}} 
+\end{figure}
+
+Wartością każdego neuronu wejściowego jest wynik operacji konwolucji. W celu otrzymania wszystkich wejść należy ,,przesuwać'' maskę po całym obrazie. W zależności od rozmiaru maski (zazwyczaj $3x3$, $5x5$ lub $7x7$) otrzymujemy odpowiednią liczbę wejść sieci. Operacja ta została przedstawiona na rysunku \ref{cnn1}. Należy wspomnieć, że wagi wszystkich neuronów są wspólne. Można stwierdzić, że w ten sposób pierwsza warstwa służy do wykrycia dokładnie jednej cechy obrazu. Jedna cecha na jedną warstwę, to byłoby jednak za mało, więc ostatecznie najlepiej przedstawić pojedyncza warstwę konwolucyjną w trzech wymiarach, co można zobaczyć na rysunku \ref{cnn2}.
+
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z 
+\includegraphics[scale=0.6]{res/cnn2.png}
+\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach. Źródło:\cite{nielsen}\label{cnn2}} 
+\end{figure}
+
+W sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także warstwy typu \textit{pooling}, które pozwalają na pomniejszenie obrazu, co z kolei redukuje w pewnym stopniu koszty związane z obliczeniami. Jedną z podstawowych wykorzystywanych technik jest tzw. \textit{max-pooling}. Ponownie używając maski dowolnego rozmiaru (zazwyczaj $2x2$) ,,przechodzimy'' po całym obrazie, lecz tym razem wybierając do warstwy po operacji \textit{poolingu} piksel o najwyższej wartości.
+
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z 
+\includegraphics[scale=0.6]{res/pooling.png}
+\caption[Caption for LOF]{Warstwa typu \textit{pooling}. Źródło:\cite{nielsen}\label{pooling}} 
+\end{figure}
+
+Po warstwach konwolucyjnych oraz typu \textit{pooling}, których ilość jest arbitralna, następuję przejście do tradycyjnych sieci neuronowych, gdzie dokonywana jest ostateczna klasyfikacja. Cała architektura przedstawiona została na rysunku \ref{cnn3}.
+
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14
+\includegraphics[scale=0.75]{res/cnn3.jpg}
+\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych\footnotemark\label{cnn2}} 
+\end{figure}
+\footnotetext{\url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}}
 
 \subsection{Wykorzystane metody optymalizacji}
 \subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
