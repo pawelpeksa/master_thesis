@@ -100,7 +100,9 @@ W każdej iteracji uczenia sieci, na wejście podawany są dane. W zależności 
 Niniejszy rozdzial zostal napisany na podstawie\cite{dnn1}.\\
 % https://stats.stackexchange.com/questions/182734/what-is-the-difference-between-a-neural-network-and-a-deep-neural-network
 % https://arxiv.org/pdf/1703.09039.pdf
-Ideą stojącą za głębokimi sieciami neuronowymi jest tworzenie sieci, które posiadają wiele warstw ukrytych. Wiele, to znaczy od kilku do nawet kilku tysięcy. W tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a bardzo często tylko jedna. Udowodnione zostało matematycznie, że sieć o takiej strukturze jest zdolna do modelowania jakiejkolwiek funkcji pod warunkiem występowania w niej nieliniowych funkcji aktywacji w neuronach. W przypadku tradycyjnych sieci neuronowych na wejście sieci podawane są atrybuty, które należy samemu określić. Są to wyznaczone matematycznie cechy w zależności od problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na obrazie. Do sieci neuronowej możemy podać w takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że sieć miałaby bardzo dużo wejść, a co za tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na obrazie linii lub okręgów oraz wiele więcej. Przy operacji ekstrakcji cech z obrazu następuję naturalnie pewna utrata informacji. W przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na wejście sieci podawany są dane w stanie ,,surowym''. Pozwala to na uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz dobrze zbudowanej sieci pozwala na znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na rysunku \ref{dnnDiff}.
+Ideą stojącą za głębokimi sieciami neuronowymi jest tworzenie sieci, które posiadają wiele warstw ukrytych. Wiele, to znaczy od kilku do nawet kilku tysięcy. W tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a bardzo często tylko jedna. Udowodnione zostało matematycznie, że sieć o takiej strukturze jest zdolna do modelowania jakiejkolwiek funkcji pod warunkiem występowania w niej nieliniowych funkcji aktywacji w neuronach, więc przez długi okres czasu nie sieci o wiele większych rozmiarach nie były rozważane. <Sprawdzic to?> W związku ze wzrostem mocy obliczeniowej komputerów, a także szerokim dostępie do wszelkiego rodzaju danych nie jest jednak problemem stworzenie sieci o wiele większych od tradycyjnych. Okazało się, że w ten sposób otrzymane wyniki są znacznie lepsze i sieci głębokie sieci stanowią kolejny przełom w dziedzinie uczenia maszynowego.
+
+Najłatwiej objaśnić głębokie sieci neuronowe na podstawie przykładu. W przypadku tradycyjnych sieci neuronowych na wejście sieci podawane są atrybuty, które należy samemu określić. Są to wyznaczone matematycznie cechy w zależności od problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na obrazie. Do sieci neuronowej możemy podać w takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że sieć miałaby bardzo dużo wejść, a co za tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na obrazie linii lub okręgów oraz wiele więcej. Przy operacji ekstrakcji cech z obrazu następuję naturalnie pewna utrata informacji. W przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na wejście sieci podawany są dane w stanie ,,surowym''. Pozwala to na uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz dobrze zbudowanej sieci pozwala na znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na rysunku \ref{dnnDiff}.
 
 \begin{figure}[ht!]
 \centering
@@ -148,12 +150,14 @@ Po warstwach konwolucyjnych oraz typu \textit{pooling}, których ilość jest ar
 \end{figure}
 \footnotetext{\url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}}
 
+\subsection{Problemy wynikające z niskiej ilości danych?}\label{problems}
+W przypadku uczenia maszynowego z nauczycielem istnieje potrzeba posiadania danych, które posłużą do uczenia. Im więcej danych posiadamy, tym większy wachlarz metod, których możemy użyć. 
+\subsection{Proponowane rozwiązania?}
+
 \subsection{Wykorzystane metody optymalizacji}
 \subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
 \subsubsection{Sztuczne powiekszanie zbioru danych}
 \subsubsection{Ekstrakcja cech}
-\subsection{Problemy wynikające z niskiej ilości danych?}\label{problems}
-\subsection{Proponowane rozwiązania?}
 \paragraph{LDA}
 \paragraph{PCA}
 
