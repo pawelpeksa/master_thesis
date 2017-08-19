@@ -12,7 +12,9 @@ Ogólnie możemy powiedzieć, że zadaniem algorytmu jest znalezienie takiej fun
 \begin{equation}
 d = (x_1,y_1), (x_2, y_2), ..., (x_n, y_n).
 \end{equation}
-Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensamble}.
+Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W najbardziej podstawowym przypadku, posiadane dane dzieli się na dwa zbiory. Jeden z nich określany jest zbiorem uczącym, a drugi testującym. Podział dokonywany jest w celu oceny stworzonego, a następnie nauczonego modelu przy użyciu danych, które nie zostały wykorzystane do jego uczenia. TODO: Ocena algorytmu uczenia maszynowego, błąd
+
+W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensamble}.
 %W tej pracy wszystkie metody optymalizacji były analizowane pod kątem problemu klasyfikacji lecz naturalne jest ich użycie w przypadku problemu regresji.
 
 \subsection{Wykorzystane algorytmy}
@@ -100,7 +102,7 @@ W każdej iteracji uczenia sieci, na wejście podawany są dane. W zależności 
 Niniejszy rozdzial zostal napisany na podstawie\cite{dnn1}.\\
 % https://stats.stackexchange.com/questions/182734/what-is-the-difference-between-a-neural-network-and-a-deep-neural-network
 % https://arxiv.org/pdf/1703.09039.pdf
-Ideą stojącą za głębokimi sieciami neuronowymi jest tworzenie sieci, które posiadają wiele warstw ukrytych. Wiele, to znaczy od kilku do nawet kilku tysięcy. W tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a bardzo często tylko jedna. Udowodnione zostało matematycznie, że sieć o takiej strukturze jest zdolna do modelowania jakiejkolwiek funkcji pod warunkiem występowania w niej nieliniowych funkcji aktywacji w neuronach, więc przez długi okres czasu nie sieci o wiele większych rozmiarach nie były rozważane. <Sprawdzic to?> W związku ze wzrostem mocy obliczeniowej komputerów, a także szerokim dostępie do wszelkiego rodzaju danych nie jest jednak problemem stworzenie sieci o wiele większych od tradycyjnych. Okazało się, że w ten sposób otrzymane wyniki są znacznie lepsze i sieci głębokie sieci stanowią kolejny przełom w dziedzinie uczenia maszynowego.
+Ideą stojącą za głębokimi sieciami neuronowymi jest tworzenie sieci, które posiadają wiele warstw ukrytych. Wiele, to znaczy od kilku do nawet kilku tysięcy. W tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a bardzo często tylko jedna. Udowodnione zostało matematycznie, że sieć o takiej strukturze jest zdolna do modelowania jakiejkolwiek funkcji pod warunkiem występowania w niej nieliniowych funkcji aktywacji w neuronach, więc przez długi okres czasu sieci o większych rozmiarach nie były rozważane.W związku ze wzrostem mocy obliczeniowej komputerów, a także szerokim dostępie do wszelkiego rodzaju danych nie jest jednak problemem stworzenie sieci o wiele większych od tradycyjnych. Okazało się, że w ten sposób otrzymane wyniki są znacznie lepsze i sieci głębokie sieci stanowią kolejny przełom w dziedzinie uczenia maszynowego.
 
 Najłatwiej objaśnić głębokie sieci neuronowe na podstawie przykładu. W przypadku tradycyjnych sieci neuronowych na wejście sieci podawane są atrybuty, które należy samemu określić. Są to wyznaczone matematycznie cechy w zależności od problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na obrazie. Do sieci neuronowej możemy podać w takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że sieć miałaby bardzo dużo wejść, a co za tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na obrazie linii lub okręgów oraz wiele więcej. Przy operacji ekstrakcji cech z obrazu następuję naturalnie pewna utrata informacji. W przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na wejście sieci podawany są dane w stanie ,,surowym''. Pozwala to na uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz dobrze zbudowanej sieci pozwala na znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na rysunku \ref{dnnDiff}.
 
@@ -150,8 +152,29 @@ Po warstwach konwolucyjnych oraz typu \textit{pooling}, których ilość jest ar
 \end{figure}
 \footnotetext{\url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}}
 
-\subsection{Problemy wynikające z niskiej ilości danych?}\label{problems}
-W przypadku uczenia maszynowego z nauczycielem istnieje potrzeba posiadania danych, które posłużą do uczenia. Im więcej danych posiadamy, tym większy wachlarz metod, których możemy użyć. 
+\subsection{Przeuczenie}
+Przeuczenie (\textit{overfitting}) jest jednym z głównych problemów na który można napotkać podczas korzystania z algorytmów uczenia maszynowego. W pierwszym zetknięciu z uczeniem maszynowym mogłoby się wydawać, że im mniejszy błąd uzyskany podczas uczenia, tym lepiej. Okazuje się jednak, że podczas uczenia, zwłaszcza gdy model posiada zbyt wysoką liczbę stopni swobody, algorytm dopasowuje się ściśle do konkretnych danych, które w rzeczywistości są w pewnym stopniu zaszumione. Można powiedzieć, że algorytm ,,uczy się'' wtedy na pamięć, co nie jest oczekiwanym rezultatem, ponieważ staje się on wtedy również mniej skuteczny dla danych innych niż uczące. Model jest wtedy niezdolny do generalizacji, a właśnie po to został stworzony, aby można było do użyć na danych, których wcześniej ,,nie widział''. Analogicznie, można spotkać się też z problemem niedouczenia \textit{underfitting}. Oznacza to, że funkcja, którą chcemy modelować jest zbyt skomplikowana dla naszego modelu, co wynika z tego, że posiada on zbyt niską liczbę stopni swobody. Obie sytuacje zostały przedstawione na rysunku \ref{overfitting}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{res/overfitting.png}
+\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji\footnotemark\label{overfitting}} 
+\end{figure}
+\footnotetext{\url{http://mlwiki.org/index.php/Overfitting}}
+
+
+\subsection{Problemy wynikające z niskiej ilości danych}\label{problems}
+W przypadku uczenia maszynowego z nauczycielem istnieje potrzeba posiadania danych, które posłużą do uczenia. Im więcej danych, tym szerszy wachlarz metod, których możemy użyć. Tak jak zostało jednak wspominane w rozdziale \ref{matter}, istnieją wciąż dziedziny w których może się okazać, że nie znajdujemy się w tej komfortowej sytuacji dysponowania milionami rekordów danych. W takich okolicznościach spotkać się możemy z następującymi problemami:
+
+\begin{itemize}
+\item przeuczenie staję się bardzo dużym problemem i jest trudniejsze do uniknięcia,
+\item elementy odosobnione mają dużo większy wpływ na proces uczenie
+\item szum w danych ma również większy wpływ na wyniki działania algorytmów uczenia maszynowego.
+\end{itemize}
+	
+
+ Opracowane zostały jednak metody, które mogą pomóc w takiej sytuacji.
+
 \subsection{Proponowane rozwiązania?}
 
 \subsection{Wykorzystane metody optymalizacji}
