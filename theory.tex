@@ -1,7 +1,7 @@
 \section{Wstep teoretyczny} \label{theory}
 W kolejnych podrozdziałach opisane są krótko podstawy teoretyczne dotyczące uczenia maszynowego, wykorzystanych algorytmów oraz użytych metod optymalizacji.
 \subsection{Formalny opis uczenia maszynowego}
-Uczenie maszynowe okreslane jest jako jedna z galezi sztucznej inteligencji \cite{dnn1}. Formalną definicję podał Tom Mitchell, która brzmi następująco: ,,Mówimy, że maszyna uczy się zadania $T$ w oparciu o doświadczenie $E$ i miarę jakości $P$, jeśli wraz z przyrostem doświadczenia $E$ poprawia się jakość wykonywanego zadania $T$ mierzona przez miarę $P$.''\cite{mitchel} Przykładowo można wymienić trójkę $T$, $E$, $P$ jako diagnozowanie pacjenta na podstawie symptomów, dotychczasowe  liczba wykonanych przez maszynę diagnoz (poprawnie lub nie),  poprawność diagnozowania na podstawie do tej pory niespotkanych przypadków. Powyższe przykłady można mnożyć. Zapis formalny (na podstawie \cite{formal2}) w przypadku algorytmów przedstawionych w nieniejszej pracy możemy przedstawić następująco:
+Uczenie maszynowe okreslane jest jako jedna z galezi sztucznej inteligencji \cite{dnn1}. Formalną definicję podał Tom Mitchell, która brzmi następująco: ,,Mówimy, że maszyna uczy się zadania $T$ w oparciu o doświadczenie $E$ i miarę jakości $P$, jeśli wraz z przyrostem doświadczenia $E$ poprawia się jakość wykonywanego zadania $T$ mierzona przez miarę $P$.''\cite{mitchel} Przykładowo można wymienić trójkę $T$, $E$, $P$ jako diagnozowanie pacjenta na podstawie symptomów, dotychczasowe  liczba wykonanych przez maszynę diagnoz (poprawnie lub nie),  poprawność diagnozowania na podstawie do tej pory niespotkanych przypadków. Powyższe przykłady można mnożyć. Zapis formalny (na podstawie \cite{formal2}) w przypadku algorytmów przedstawionych w niniejszej pracy możemy przedstawić następująco:
 \begin{itemize}
 \item $x$ - dane wejściowe algorytmu
 \item $y$ - wyjście algorytmu
@@ -12,8 +12,12 @@ Ogólnie możemy powiedzieć, że zadaniem algorytmu jest znalezienie takiej fun
 \begin{equation}
 d = (x_1,y_1), (x_2, y_2), ..., (x_n, y_n).
 \end{equation}
-Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W najbardziej podstawowym przypadku, posiadane dane dzieli się na dwa zbiory. Jeden z nich określany jest zbiorem uczącym, a drugi testującym. Podział dokonywany jest w celu oceny stworzonego, a następnie nauczonego modelu przy użyciu danych, które nie zostały wykorzystane do jego uczenia. TODO: Ocena algorytmu uczenia maszynowego, błąd
+Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y_i$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W najbardziej podstawowym przypadku, posiadane dane dzieli się na dwa zbiory. Jeden z nich określany jest zbiorem uczącym, a drugi testującym. Podział dokonywany jest w celu oceny stworzonego, a następnie nauczonego modelu przy użyciu danych, które nie zostały wykorzystane do jego uczenia. TODO: Ocena algorytmu uczenia maszynowego. W celu określenia wydajności algorytmu zazwyczaj używa się błędu średniokwadratowego, który wyraża się wzorem:
 
+\begin{equation}
+\frac{1}{n} \sum_{j=1}^{n}(y_j - \hat{y}_j),
+\end{equation}
+przy czym $\hat{y}_j$ oznacza odpowiedź stworzonego predykatora dla atrybutów przykładu $i$.
 W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensamble}.
 %W tej pracy wszystkie metody optymalizacji były analizowane pod kątem problemu klasyfikacji lecz naturalne jest ich użycie w przypadku problemu regresji.
 
@@ -162,6 +166,7 @@ Przeuczenie (\textit{overfitting}) jest jednym z głównych problemów na który
 \end{figure}
 \footnotetext{\url{http://mlwiki.org/index.php/Overfitting}}
 
+\subsection{Krzywa ROC}
 
 \subsection{Problemy wynikające z niskiej ilości danych}\label{problems}
 W przypadku uczenia maszynowego z nauczycielem istnieje potrzeba posiadania danych, które posłużą do uczenia. Im więcej danych, tym szerszy wachlarz metod, których możemy użyć. Tak jak zostało jednak wspominane w rozdziale \ref{matter}, istnieją wciąż dziedziny w których może się okazać, że nie znajdujemy się w tej komfortowej sytuacji dysponowania milionami rekordów danych. W takich okolicznościach spotkać się możemy z następującymi problemami:
