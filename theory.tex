@@ -102,7 +102,7 @@ W każdej warstwie może znajdować się dowolna ilość neuronów. Przykład si
 \footnotetext{\url{https://2ml4pa.bn1303.livefilestore.com/y2p6no6Dn0weHW3FG9tceTUS9lohx5ldcxvFZRhKdbeFQi2kntad_77gKeKIC-INcsFRCvGI-_DY9lMdZzaX8jkSHDvqlcT3qRnftpAt7esi4s/1.PNG?psid=1}}
 
 W każdej iteracji uczenia sieci, na wejście podawany są dane. W zależności o odpowiedzi otrzymanej przez sieć przeprowadzana jest poprawa wag. Po przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby poprawnie odpowiadać na kolejne sygnały wejściowe. W ogólności mówimy o minimalizacji błędu sieci $Q$ w zależności od wag sieci. W równaniu aktualizującym wagi występuję również współczynnik $\eta$, który jest tzw. współczynnikiem uczenia, który zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z parametrów modelu, który należy wyznaczyć. Kolejnym z parametrów tego modelu jest liczba neuronów w warstwie ukrytej. Liczba neuronów w warstwie wejściowej zależy od liczby atrybutów naszych danych, natomiast wyjściowej od tego na ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o jednej warstwie. W celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od warstwy wyjściowej. Dla neuronów w warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do których dany neuron wysłał swój sygnał.
-\subsubsection{Głębokie sieci neuronowe}
+\subsubsection{Głębokie sieci neuronowe}\label{dnn}
 Niniejszy rozdzial zostal napisany na podstawie\cite{dnn1}.\\
 % https://stats.stackexchange.com/questions/182734/what-is-the-difference-between-a-neural-network-and-a-deep-neural-network
 % https://arxiv.org/pdf/1703.09039.pdf
@@ -232,10 +232,31 @@ Istnieje jednak kilka sposobów, które pomagają radzić sobie w sytuacji niski
 
 
 \subsection{Wykorzystane metody optymalizacji}
-\subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
-\subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
-\subsubsection{Sztuczne powiekszanie zbioru danych}
+Niniejszy podrozdział zawiera opis metod, które zostały użyte w tej pracy w celu optymalizacji uczenia maszynowego. Wyniki 
+natomiast, przedstawione zostały w rozdzaiel \ref{results}.
+\subsubsection{Sztuczne powiększenie zbioru danych}
+Sztuczne powiększenie zbioru (\textit{data augmentation}) danych w przypadku danych graficznych jest najłatwiejszą oraz najpopularniejszą metodą, która służy do minimalizowania efektu przeuczenia\cite{dataaugment}. Polega ona na transformacji danych tj. obrazów, przy zachowaniu ich kategorii. Często przekształcenia te związane są z symetrią obrazu, lecz nie tylko. Wymienić można między innymi:
+\begin{itemize}
+\item odbicie lustrzane obrazu (w pionie lub w poziomie),
+\item rotacja obrazu o dany kąt,
+\item przybliżenie obrazu,
+\item przeskalowanie,
+\item przycięcie obrazu.
+\end{itemize}
+
+\subsubsection{Walidacja krzyżowa}
+We wszystkich algorytmach uczenia maszynowego występują parametry, które należy określić dla danego modelu predykcyjnego. W zależności od metody, oznaczają co innego, ale w każdym przypadku ważny jest optymalny ich dobór, aby uzyskać jak najlepszy wynik.W najbardziej podstawowym przypadku, zbiór danych, który posiadamy, dzielimy na dwie części tj. zbiór uczący oraz testowy. Pierwszy z nich służy do uczenia, a drugi do określanie jakości stworzonego modelu. W przypadku przeszukiwania przestrzeni parametrów modelu w celu ich optymalnego doboru, kierujemy się wynikiem predykcji dla zbioru testowego. Jest to naturalne ze względu na występujący efekt przeuczenia dla danych uczących. Ocena na wcześniej ,,niewidzianych'' przez model danych będzie bardziej obiektywna. Przy takim rozwiązaniu jednak, pewna część informacji ze zbioru testowego również ,,wycieka'' do naszego modelu, więc możemy mieć do czynienia z efektem przeuczenia. Idealnym rozwiązaniem było podzielenie naszych danych na zbiór uczący, testowy oraz walidujący. Zbiór walidujący posłużyłby wtedy do doboru optymalnych parametrów modelu, a następnie zbiór testowym do ostatecznej ewaluacji. Łatwo jednak wywnioskować, że w sytuacji, gdy ilość danych jest niska, tworzenie trzech osobnych zbiorów jest mało optymalnym rozwiązaniem, ponieważ jeszcze mniej danych wykorzystane zostanie do uczenia modelu. Rozwiązaniem tego problemu jest walidacjia krzyżowa (\textit{cross validation}). W tej metodzie dzielimy zbiór który posiadamy na $k$ losowych części, a następnie uczymy oraz testujemy model $k$ razy przy czym za każdym razem do uczenia wykorzystujemy $k-1$ części danych, a do testowania jedną część, która nie została użyta do uczenia modelu. Jako ostateczny wynik ewaluacji przyjmujemy średnią z $k$ otrzymanych wyników. Korzystając z tej metody, parametru modelu zostaną dobrane używając większej ilości danych minimalizując efekt przeuczenia. Takie podejście z pewnością powoduje znacznie większe zapotrzebowanie na zasoby obliczeniowe. W skrajnym przypadku, gdy $k=N$, przy czym $N$ oznacza liczbę wszystkich rekordów, mówimy o metodzie \textit{leave one out}. W praktyce jednak stosuję się walidację krzyżową przy $k=10$. Graficzna ilustracja tej metody została przedstawiona na rysunku \ref{cv}.
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{res/cv.jpg}
+\caption[Caption for LOF]{Przykład walidacji krzyżowej\footnotemark} \label{cv} 
+\end{figure}
+\footnotetext{\url{https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg}}
+
 \subsubsection{Ekstrakcja cech}
-\paragraph{LDA}
+Ekstrakcja cech jest nieodwracalną operacją na danych, które posiadamy. Polega ona na transformacji atrybutów w taki sposób, aby zmniejszyć ich ilość. Zawsze wiąże się to z utratą informacji, ponieważ nie jest możliwe reprezentacja tej samej informacji przy zmniejszonej wymiarowości danych pomijając sytuację, gdy atrybuty są od siebie liniowo zależne. Zmniejszanie wymiarowości danych przez eliminacje redundantnych atrybutów nazywamy z kolei redukcją cech. 
+Ekstrakcja cech dokonywana jest zazwyczaj w sytuacji, gdy ilość atrybutów danych jest zbyt duża w stosunku do ogólnej ilości danych, które posiadamy lub atrybuty są zbyt niskiego poziomu, aby dana metoda uczenia maszynowego była w stanie modelować funkcję atrybutów. Druga przyczyna jednak zależy od użytej metody, ponieważ w przypadku głębokich sieci neuronowych, pod warunkiem dobrania odpowiednich parametrów oraz architektury sieci, możemy spodziewać się lepszych wyników dla atrybutów niższego poziomu (przed zastosowaniem ekstrakcji cech) jak zostało to opisane w rozdziale \ref{dnn}. Można wyróżnić dwa podejścia do ekstrakcji cech. Jedno przy wykorzystaniu metod matematycznych np. PCA lub LDA opisanych poniżej. O drugim podejściu mówimy natomiast w sytuacji, gdy transformacja danych dokonywana jest przy użyciu dodatkowej wiedzy, którą posiadamy na temat danych. Na przykładzie obrazów możemy powiedzieć, że uzyskanie z nich informacji opisujących ich konkretne parametry mówiące nam np. o krawędziach na obrazie czy istnieniu na nim linii lub okręgów, jest ekstrakcją cech. W przypadku z kolei dźwięku, cechami niskiego poziomu, można nazwać amplitudę w funkcji czasu, natomiast cechą wysokiego poziomu np. wskaźnik zmiany znaku amplitudy.
 \paragraph{PCA}
+\paragraph{LDA}
+
 
