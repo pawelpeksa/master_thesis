@@ -12,13 +12,13 @@ Ogólnie możemy powiedzieć, że zadaniem algorytmu jest znalezienie takiej fun
 \begin{equation}
 d = (x_1,y_1), (x_2, y_2), ..., (x_n, y_n).
 \end{equation}
-Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y_i$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W najbardziej podstawowym przypadku, posiadane dane dzieli się na dwa zbiory. Jeden z nich określany jest zbiorem uczącym, a drugi testującym. Podział dokonywany jest w celu oceny stworzonego, a następnie nauczonego modelu przy użyciu danych, które nie zostały wykorzystane do jego uczenia. TODO: Ocena algorytmu uczenia maszynowego. W celu określenia wydajności algorytmu zazwyczaj używa się błędu średniokwadratowego, który wyraża się wzorem:
-
+Każda para $(x_i, y_i)$ stanowi jeden rekord danych lub też jeden przykład podawany do algorytmu. W odniesieniu do przykładu z rozpoznawaniem chorób na podstawie symptomów, jednym rekordem jest konkretny zestaw symptomów ($x_i$) wraz z diagnozą ($y$).  Ogólniej, poszczególne symptomy nazywa się cechami lub atrybutami. W zależności od tego czy $y_i$ przyjmuje wartości ciągłe czy dyskretne, mamy do czynienia z wykorzystaniem uczenia maszynowego w problemie kolejno regresji lub klasyfikacji. W najbardziej podstawowym przypadku, posiadane dane dzieli się na dwa zbiory. Jeden z nich określany jest zbiorem uczącym, a drugi testującym. Podział dokonywany jest w celu oceny stworzonego, a następnie nauczonego modelu przy użyciu danych, które nie zostały wykorzystane do jego uczenia. W celu określenia wydajności algorytmu zazwyczaj używa się błędu średniokwadratowego, który wyraża się wzorem:
+% MSE: https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d
 \begin{equation}
-\frac{1}{n} \sum_{j=1}^{n}(y_j - \hat{y}_j),
+\frac{1}{n} \sum_{j=1}^{n}(y_j - \hat{y}_j), 
 \end{equation}
 przy czym $\hat{y}_j$ oznacza odpowiedź stworzonego predykatora dla atrybutów przykładu $i$.
-W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensamble}.
+W kolejnych podrozdziałach autor korzysta również z określenia niestabilny algorytm uczenia maszynowego. Mamy z takim do czynienia, gdy mała zmiana w danych wejściowych może spowodować dużą zmianę w predykcjach generowanych przez algorytm\cite{ensemble}.
 %W tej pracy wszystkie metody optymalizacji były analizowane pod kątem problemu klasyfikacji lecz naturalne jest ich użycie w przypadku problemu regresji.
 
 \subsection{Wykorzystane algorytmy}
@@ -46,12 +46,12 @@ Warunkiem końca algorytmu może być sytuacja w której wszystkie stworzone pod
 
 \subsubsection{Las drzew decyzyjnych}
 %http://jair.org/media/614/live-614-1812-jair.pdf
-Las drzew decyzyjnych(\textit{Random forest}) powstał na podstawie idei tworzenia silnego klasyfikatora na podstawie $n$ słabych klasyfikatorów tego samego typu. Podejście to w literaturze określane jest jako \textit{ensable learning}. Szczególnym przypadkiem tego podejścia jest tzw. \textit{bagging}\cite{gonczarek}. Koncepcję \textit{ensable learning} można zobrazować przedstawiając wiele wielomianów, które nie modelują zbyt dobrze funkcji $f$, lecz ich uśrednianie już realizuje to znacznie lepiej, co zostało przedstawione na rysunku \ref{avg1}.  W przypadku uczenia klasyfikatora typu \textit{bagging} tworzymy $m$ klasyfikatorów, każdy z nich uczymy używając $N$ rekordów, który losujemy z powtórzeniami korzystając ze zbioru danych o rozmiarze $N$. Implikuje to fakt, że niektóre ze słabych klasyfikatorów uczone będą na przykładach, które się powtarzają lub niektóre z przykładów w ogóle nie zostaną wzięte pod uwagę. Poszczególne klasyfikatory z pewnością będą cechowały się mniejszą skutecznością jeśli chodzi o klasyfikację, ale ich uśredniony wynik zazwyczaj daje lepsze rezultaty. Wykorzystanie sprawdza się najczęściej w przypadku niestabilnych algorytmów uczenia maszynowego do których zaliczyć też można drzewa decyzyjne\cite{ensable}. Duża zaletą algorytmów typu \textit{bagging} jest fakt, iż ich zrównoleglanie jest bardzo naturalne.
+Las drzew decyzyjnych(\textit{Random forest}) powstał na podstawie idei tworzenia silnego klasyfikatora na podstawie $n$ słabych klasyfikatorów tego samego typu. Podejście to w literaturze określane jest jako \textit{ensemble learning}. Szczególnym przypadkiem tego podejścia jest tzw. \textit{bagging}\cite{gonczarek}. Koncepcję \textit{ensemble learning} można zobrazować przedstawiając wiele wielomianów, które nie modelują zbyt dobrze funkcji $f$, lecz ich uśrednianie już realizuje to znacznie lepiej, co zostało przedstawione na rysunku \ref{avg1}.  W przypadku uczenia klasyfikatora typu \textit{bagging} tworzymy $m$ klasyfikatorów, każdy z nich uczymy używając $N$ rekordów, który losujemy z powtórzeniami korzystając ze zbioru danych o rozmiarze $N$. Implikuje to fakt, że niektóre ze słabych klasyfikatorów uczone będą na przykładach, które się powtarzają lub niektóre z przykładów w ogóle nie zostaną wzięte pod uwagę. Poszczególne klasyfikatory z pewnością będą cechowały się mniejszą skutecznością jeśli chodzi o klasyfikację, ale ich uśredniony wynik zazwyczaj daje lepsze rezultaty. Wykorzystanie sprawdza się najczęściej w przypadku niestabilnych algorytmów uczenia maszynowego do których zaliczyć też można drzewa decyzyjne\cite{ensemble}. Duża zaletą algorytmów typu \textit{bagging} jest fakt, iż ich zrównoleglanie jest bardzo naturalne.
 W przypadku lasu drzew decyzyjnych, jak nazwa wskazuje, mamy do czynienia z zespołem słabych klasyfikatorów, które są drzewami decyzyjnymi. Dodatkowo, w celu uczenia poszczególnych drzew, wykorzystujemy tylko $M$ atrybutów zbioru uczącego. Przy czym zaleca się, aby $M=\sqrt{K}$, zakładając, że $K$ oznacza liczbę wszystkich atrybutów zbioru uczącego. Podstawowymi parametrami lasu drzew decyzyjnych, które należy wyznaczyć jest liczba słabych klasyfikatorów wchodzących w skład klasyfikatora oraz maksymalna głębokość wykorzystanych drzew decyzyjnych.
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/avg1.png}
-\caption[Caption for LOF]{Ilistracja działania \textit{ensamble learning} TODO:Podać źródło?\label{avg1}}
+\caption[Caption for LOF]{Ilistracja działania \textit{ensemble learning} TODO:Podać źródło?\label{avg1}}
 \end{figure} 
 
 \subsubsection{Maszyna wektorow nosnych}
@@ -162,27 +162,77 @@ Przeuczenie (\textit{overfitting}) jest jednym z głównych problemów na który
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.8]{res/overfitting.png}
-\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji\footnotemark\label{overfitting}} 
+\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji\footnotemark \label{overfitting}} 
 \end{figure}
 \footnotetext{\url{http://mlwiki.org/index.php/Overfitting}}
 
-\subsection{Krzywa ROC}
+\subsection{Tablica pomyłek i krzywa ROC}
+Tablica pomyłek może posłużyć do oceny jakości klasyfikacji binarnej. Rozważając taką klasyfikację, model może odpowiedzieć tylko na dwa sposoby: pozytywnie oraz negatywnie. Odpowiedź może być błędna lub poprawna, co daje cztery możliwości. Na tej podstawie otrzymujemy cztery wielkości:
+\begin{itemize}
+\item ilość predykcji prawdziwie pozytywnych (\textit{true positive}, TP),
+\item ilość predykcji fałszywie negatywnych (\textit{false negative}, FN),
+\item ilość predykcji fałszywie pozytywna (\textit{false positive}, FP),
+\item ilość predykcji prawdziwie negatywnych (\textit{true negative}, TN).
+\end{itemize}
+Powyższe możliwości zostały zestawione w tabeli \ref{table:confusionmatrix}. Idąc dalej możemy określić TPR(\textit{true positive rate}) oraz FPR(\textit{false positive rate}):
+
+\begin{equation}
+TPR = \frac{TP}{P} = \frac{TP}{TP+FN} 
+\end{equation}
+\noindent
+oraz
+
+\begin{equation}
+FPR = \frac{FP}{N} = \frac{FP}{FP+TN},
+\end{equation}
+przy czym $T$ oraz $N$ oznaczają kolejno wszystkie próbki pozytywne oraz wszystkie próbki negatywne. Na podstawie $TPR$ oraz $FPR$ z kolei istnieje możliwość wykreślenia krzywej ROC(\textit{Receiver Operating Characteristic}). W celu wykreślenia krzywej ROC stworzony model powinien na wyjściu zwracać prawdopodobieństwo  przynależności do jednej z dwóch klas. W zależności od ustalenia punktu odcięcia tj. wartości prawdopodobieństwa dla którego stwierdzamy przynależność do danej klasy otrzymujemy dwie wartości TPR oraz FPR dla danego punktu odcięcia. Ostatecznie można określić krzywą ROC jako funkcję zależną od punktu odcięcia, która została przedstawiona na rysunku \label{roc}. W celu opisania jakości klasyfikatora jedną liczbą można posłużyć się także polem powierzchni pod krzywą ROC.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{res/roc3.png}
+\caption[Caption for LOF]{Krzywa ROC\footnotemark \label{roc}} 
+\end{figure}
+\footnotetext{\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+
+\begin{tabular}{llllll}
+                                                         &                                                              & \multicolumn{2}{c}{klasa rzeczywista}                                                                                                                                    &  &  \\ \cline{3-4}
+                                                         & \multicolumn{1}{l|}{}                                        & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} klasa pozytywna}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} klasa negatywna}} &  &  \\ \cline{2-4}
+\multicolumn{1}{c|}{}                                    & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}klasa pozytywna} & \multicolumn{1}{l|}{prawdziwie pozytywna}                                           & \multicolumn{1}{l|}{fałszywie pozytywna}                                            &  &  \\ \cline{2-4}
+\multicolumn{1}{c|}{\multirow{-2}{*}{klasa predykowana}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}klasa negatywna} & \multicolumn{1}{l|}{fałszywie negatywna}                                            & \multicolumn{1}{l|}{prawdziwie negatywna}                                           &  &  \\ \cline{2-4}
+                                                         &                                                              &                                                                                     &                                                                                     &  & 
+\end{tabular}
+\caption{Tablica pomyłek} \label{table:confusionmatrix}
+\end{table}
+
+
 
 \subsection{Problemy wynikające z niskiej ilości danych}\label{problems}
 W przypadku uczenia maszynowego z nauczycielem istnieje potrzeba posiadania danych, które posłużą do uczenia. Im więcej danych, tym szerszy wachlarz metod, których możemy użyć. Tak jak zostało jednak wspominane w rozdziale \ref{matter}, istnieją wciąż dziedziny w których może się okazać, że nie znajdujemy się w tej komfortowej sytuacji dysponowania milionami rekordów danych. W takich okolicznościach spotkać się możemy z następującymi problemami:
 
 \begin{itemize}
 \item przeuczenie staję się bardzo dużym problemem i jest trudniejsze do uniknięcia,
-\item elementy odosobnione mają dużo większy wpływ na proces uczenie
+\item elementy odosobnione mają dużo większy wpływ na proces uczenie,
 \item szum w danych ma również większy wpływ na wyniki działania algorytmów uczenia maszynowego.
 \end{itemize}
-	
+Istnieje jednak kilka sposobów, które pomagają radzić sobie w sytuacji niskiej ilości danych, aczkolwiek należy pamiętać, że nie sprawią, że wykorzystanie uczenia maszynowego stanie się możliwe jeśli danych jest rzeczywiście za mało. Nie da się także jednoznacznie określić, gdzie znajduje się granica, która mówi o tym czy ilość danych jest niewystarczająca. Zależy to od konkretnego przypadku. Istnieje kilka metod optymalizacji w przypadku niskiej ilości danych:
+\begin{itemize}
+\item użycie nieskomplikowanych modeli, co przeciwdziała problemowi przeuczenia,
+\item użycie metod walidacji krzyżowej zamiast tradycyjnego podejścia podziału danych na zbiór uczący oraz testowy,
+\item ekstrakcja lub redukcja cech
+\item regularyzacja,
+\item sztuczne powielanie danych poprzez wykorzystanie ich symetrii (np. w obrazach obrócenie w poziomie lub w pionie itp.).
+\end{itemize}
 
- Opracowane zostały jednak metody, które mogą pomóc w takiej sytuacji.
-
-\subsection{Proponowane rozwiązania?}
 
 \subsection{Wykorzystane metody optymalizacji}
+\subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
 \subsubsection{Walidacja krzyzowa - wyznaczanie parametrow modelu}
 \subsubsection{Sztuczne powiekszanie zbioru danych}
 \subsubsection{Ekstrakcja cech}
