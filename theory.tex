@@ -256,8 +256,21 @@ We wszystkich algorytmach uczenia maszynowego występują parametry, które nale
 \subsubsection{Ekstrakcja cech}
 Ekstrakcja cech jest nieodwracalną operacją na danych, które posiadamy. Polega ona na transformacji atrybutów w taki sposób, aby zmniejszyć ich ilość. Zawsze wiąże się to z utratą informacji, ponieważ nie jest możliwe reprezentacja tej samej informacji przy zmniejszonej wymiarowości danych pomijając sytuację, gdy atrybuty są od siebie liniowo zależne. Zmniejszanie wymiarowości danych przez eliminacje redundantnych atrybutów nazywamy z kolei redukcją cech. 
 Ekstrakcja cech dokonywana jest zazwyczaj w sytuacji, gdy ilość atrybutów danych jest zbyt duża w stosunku do ilości danych, które posiadamy lub atrybuty są zbyt niskiego poziomu, aby dana metoda uczenia maszynowego była w stanie modelować funkcję atrybutów. Druga przyczyna jednak zależy od użytej metody, ponieważ w przypadku głębokich sieci neuronowych, pod warunkiem dobrania odpowiednich parametrów oraz architektury sieci, możemy spodziewać się lepszych wyników dla atrybutów niższego poziomu (przed zastosowaniem ekstrakcji cech) jak zostało to opisane w rozdziale \ref{dnn}. Można wyróżnić dwa podejścia do ekstrakcji cech. Jedno przy wykorzystaniu metod matematycznych np. PCA lub LDA opisanych poniżej. O drugim podejściu mówimy natomiast w sytuacji, gdy transformacja danych dokonywana jest przy użyciu dodatkowej wiedzy, którą posiadamy na temat danych. Na przykładzie obrazów możemy powiedzieć, że uzyskanie z nich informacji opisujących ich konkretne parametry mówiące nam np. o krawędziach na obrazie czy istnieniu na nim linii lub okręgów, jest ekstrakcją cech. W przypadku z kolei dźwięku, cechami niskiego poziomu, można nazwać amplitudę w funkcji czasu, natomiast cechą wysokiego poziomu np. wskaźnik zmiany znaku amplitudy.
-\paragraph{PCA}
-Analiza głównych składowycg (\textit{principal component analysis}, PCA) jest metodą, która jest z powodzeniem wykorzystywana do ekstrakcji cech. Jej działanie polega na...
-\paragraph{LDA}
-Liniowa analiza dyskryminacyjna (\textit{linear discrimant analysis, LDA) jest metodą, którą można wykorzystać do znajdowania liniowej kombinacji cech danego zbioru, 
+\paragraph{PCA}\mbox{}\\
+Analiza głównych składowych (\textit{principal component analysis}, PCA) jest metodą, która jest z powodzeniem wykorzystywana do ekstrakcji cech. Jej działanie polega na otrzymaniu kolejnych głównych składowych o największej wariancji. W praktyce można wyobrazić sobie, że operacja ta obraca układ współrzędnych w ten sposób, aby zmaksymalizować wariancję. Każdy kolejna składowa powinna być ortogonalna do poprzedniej w celu utrzymania jak największej niezależności zmiennych. Operacja została dla przypadku dwuwymiarowego została przedstawiona na rysunku \ref{pca}. W celu ekstrakcji cech, w nowej przestrzeni brane pod uwagę jest tylko arbitralnie dobrana liczba nowych atrybutów.
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{res/pca.png}
+\caption[Caption for LOF]{Graficzna ilustracja analizy głównych składowych\footnotemark} \label{pca} 
+\end{figure}
+\footnotetext{\url{https://sebastianraschka.com/faq/docs/lda-vs-pca.html}}
 
+\paragraph{LDA}\mbox{}\\
+Liniowa analiza dyskryminacyjna (\textit{linear discrimant analysis, LDA}) jest metodą, która działa w podobny sposób do PCA. Również w tej metodzie na celu mamy znalezienie nowego układu współrzędnych dla naszych danych. Różnica jednak polega na tym, że zamiast maksymalizować wariancję, maksymalizujemy separowalność kategorii rzutując dane na konkretną oś. Można wywnioskować również w takim razie, że w przeciwieństwie do PCA, w tej metodzie pod uwagę są również klasy konkretnych rekordów. Operacja została zilustrowana na rysunku \ref{lda}. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{res/lda.png}
+\caption[Caption for LOF]{Graficzna ilustracja liniowej analizy dyskryminacyjna\footnotemark} \label{lda} 
+\end{figure}
+\footnotetext{\url{https://qph.ec.quoracdn.net/main-qimg-daf30ce6ecf85035af12e97659108f0a}}
