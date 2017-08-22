@@ -1,7 +1,15 @@
 \section{Wykorzystane narzedzia i technologie} \label{tools}
-W celu przeprowadzenia zaproponowanych eksperymentów należało wybrać język programowania wraz z odpowiednimi bibliotekami zapewniającymi odpowiednie funkcjonalności. Niniejszy rozdział traktuje o wybranych technologiach w celu realizacji postawionych zadań.
+W celu przeprowadzenia zaproponowanych eksperymentów należało wybrać język programowania wraz z odpowiednimi bibliotekami zapewniającymi odpowiednie funkcjonalności. Niniejszy rozdział traktuje o technologiach wybranych celu realizacji postawionych zadań.
 \subsection{Język programowania oraz biblioteki programistyczne}
-Językiem programowania, który został wybrany do realizacji wszystkich zadań w tej pracy został język wysokiego poziomu jakim jest Python. 
-%matplotlib, gnuplot, hyperopt, tensorflow, scikit learn, keras 
+Językiem programowania, który został wybrany do realizacji wszystkich zadań w tej pracy został język wysokiego poziomu jakim jest Python. Jest to obecnie jeden ze standardów w świecie inżynierii komputerowej obok takich rozwiązań jak np. pakiet obliczeniowy Matlab, który jednak nie jest rozpowszechniany na licencji \textit{open-source}.Mogłoby się wydawać na początku, biorąc pod uwagę, że jest to język skryptowy, że działanie stworzoynych programów przy jego użyciu będzie skutkowało względnie wysokim czasem wykonania. Istniejące jednak moduły takiej jak NumPy czy SciPy zaimplementowane są w języku C dzięki czemu, pomimo łatwości tworzenia nowego kodu, nie tracimy jeśli chodzi o szybkość wykonania. Dodatkowo, razem z wymienionymi pakietami, powszechnie wykorzystywana jest biblioteka Matplotlib zapewniająca funkcjonalności związane z rysowaniem wykresów. Istnieje również duża społeczność skoncentrowana wokół języka Python dzięki czemu rozwiązywanie występujących problemów jest dużo prostsze. Oprócz wspomnianych pakietów, wykorzystane również zostały biblioteki bezpośrednio związane z uczeniem maszynowym:
+\begin{itemize}
+\item Scikit-Learn - algorytmy uczenia maszynowego oraz pokrewne (jak np. związane z ekstrakcją cech),
+\item TensorFlow - algorytmy uczenia maszynowego wraz z głębokimi sieciami neuronowymi,
+\item Keras - nakładka na pakiet TensorFlow, wykorzystany w pracy w celu obróbki obrazów,
+\item HyperOpt - optymalizacja parametrów algorytmów uczenia maszynowego.
+\end{itemize}
+Obok języka Python wykorzystany został bash, który jest najpopularniejszą powłoką sytemu UNIX. Pozwalało to na uruchomienie wielu skryptów jednocześnie z różnymi parametrami. W niektórych przypadkach w celu tworzenia wykresów zamiast biblioteki Matplotlib wykorzystany został pakiet Gnuplot ze względu na komfort jego użycia.
+
 \subsection{Środowisko}
-\subsection{System operacyjny}
+Dzięki uprzejmność Instytutu Fizyki Jąrowej PAN w Krakowie wszystkie obliczenia przeprowadzone zostały w chmurze obliczeniowej CC1, co zapewniało znacznie większą moc obliczeniowej niż w przypadku użycia komputera osobistego. Obliczenia przeprowadzane zostały pod systeme operacyjnym Linux z użyciem dystrybucji Ubuntu. Python jest językiem przenośnym, także nie byłoby problemów użycia systemu Windows, lecz wykorzystanie systemu Linux było dużo bardziej komfortowe z punktu widzenia programisty.
+
