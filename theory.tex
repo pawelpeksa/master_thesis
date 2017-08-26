@@ -32,7 +32,6 @@ Drzewo decyzyjne jest algorytmem uczenia maszynowego, który~może posłużyć w
 \centering
 \includegraphics[scale=0.6]{res/dt1.png}
 \caption[Caption for LOF]{Przykład drzewa decyzyjnego.\label{dt1image}}
-% \caption{Matematyczny model neuronu\label{neuron} Źródło:\footnote{aa} } 
 \end{figure} 
 
 \paragraph{Tworzenie drzewa decyzyjnego}\mbox{}\\
@@ -76,12 +75,9 @@ Niniejszy podrozdział powstał na~podstawie pracy \cite{tadeusiewicz}. Sztuczna
 \begin{figure}[ht!]
 \centering
 \includegraphics{res/neuron.png}
-\caption[Caption for LOF]{TODO:footnotetext on wrong page Matematyczny model neuronu\label{neuron}\footnotemark}
-% \caption{Matematyczny model neuronu\label{neuron} Źródło:\footnote{aa} } 
+\caption[Caption for LOF]{Matematyczny model neuronu. Źródło:\url{http://pl.wikipedia.org/wiki/Plik:
+Neuron_McCullocha-Pittsa.png}\label{neuron}}
 \end{figure} 
-\footnotetext{\url{http://pl.wikipedia.org/wiki/Plik:
-Neuron_McCullocha-Pittsa.png}}
-
 
 Cała sieć neuronowa jest niczym innym niż połączonymi ze~sobą neuronami. Każdemu połączeniu przypisana jest waga liczbowa, która~informuje o~tym jak~wpływają na~siebie poszczególne komórki sieci. Wszystkie neurony zgrupowaną są w~warstwy z~których możemy wyróżnić:
 \begin{itemize}
@@ -96,10 +92,8 @@ W~każdej warstwie może znajdować się dowolna ilość neuronów. Przykład si
 \centering
 % obrazek pobrany z 
 \includegraphics{res/exampleNet.png}
-\caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa\label{net}\footnotemark} 
+\caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa. Źródło:\url{https://2ml4pa.bn1303.livefilestore.com/y2p6no6Dn0weHW3FG9tceTUS9lohx5ldcxvFZRhKdbeFQi2kntad_77gKeKIC-INcsFRCvGI-_DY9lMdZzaX8jkSHDvqlcT3qRnftpAt7esi4s/1.PNG?psid=1}\label{net}} 
 \end{figure}
-
-\footnotetext{\url{https://2ml4pa.bn1303.livefilestore.com/y2p6no6Dn0weHW3FG9tceTUS9lohx5ldcxvFZRhKdbeFQi2kntad_77gKeKIC-INcsFRCvGI-_DY9lMdZzaX8jkSHDvqlcT3qRnftpAt7esi4s/1.PNG?psid=1}}
 
 W~każdej iteracji uczenia sieci, na~wejście podawany są dane. W~zależności o~odpowiedzi otrzymanej przez~sieć przeprowadzana jest poprawa wag. Po~przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby~poprawnie odpowiadać na~kolejne sygnały wejściowe. W~ogólności mówimy o~minimalizacji błędu sieci $Q$ w~zależności od~wag sieci. W~równaniu aktualizującym wagi występuję również współczynnik $\eta$, który~jest tzw. współczynnikiem uczenia, który~zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z~parametrów modelu, który~należy wyznaczyć. Kolejnym z~parametrów tego modelu jest liczba neuronów w~warstwie ukrytej. Liczba neuronów w~warstwie wejściowej zależy od~liczby atrybutów naszych danych, natomiast wyjściowej od~tego na~ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które~powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o~jednej warstwie. W~celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w~tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od~warstwy wyjściowej. Dla neuronów w~warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do~których dany neuron wysłał swój sygnał.
 \subsubsection{Głębokie sieci neuronowe}\label{dnn}
@@ -114,9 +108,8 @@ Najłatwiej objaśnić głębokie sieci neuronowe na~podstawie przykładu. W~prz
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.5]{res/dnn1.png}
-\caption[Caption for LOF]{Różnica tradycyjnych sieci neuronowych oraz głębokich sieci neuronowych w kontekście ekstrakcji cech\label{dnnDiff}\footnotemark} 
+\caption[Caption for LOF]{Różnica pomiędzy tradycyjnymi sieciami neuronowymi oraz głębokimi sieciami neuronowymi w kontekście ekstrakcji cech. Źródło: \url{https://hackernoon.com/log-analytics-with-deep-learning-and-machine-learning-20a1891ff70e}\label{dnnDiff}} 
 \end{figure}
-\footnotetext{\url{https://hackernoon.com/log-analytics-with-deep-learning-and-machine-learning-20a1891ff70e}}
 
 \subsubsection{Konwolucyjne sieci neuronowe}
 Niniejszy rozdział został napisany na~podstawie\cite{nielsen}.\\
@@ -152,9 +145,9 @@ Po~warstwach konwolucyjnych oraz~typu \textit{pooling}, których ilość jest ar
 \centering
 % obrazek pobrany z https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14
 \includegraphics[scale=0.75]{res/cnn3.jpg}
-\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych\footnotemark\label{cnn3}} 
+\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych. Źródło: \url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}label{cnn3}} 
 \end{figure}
-\footnotetext{\url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}}
+
 
 \subsection{Przeuczenie}
 Przeuczenie (\textit{overfitting}) jest jednym z~głównych problemów na~który można napotkać podczas korzystania z~algorytmów uczenia maszynowego. W~pierwszym zetknięciu z~uczeniem maszynowym mogłoby się wydawać, że~im mniejszy błąd uzyskany podczas uczenia, tym lepiej. Okazuje się jednak, że~podczas uczenia, zwłaszcza gdy model posiada zbyt wysoką liczbę stopni swobody, algorytm dopasowuje się ściśle do~konkretnych danych, które~w~rzeczywistości są w~pewnym stopniu zaszumione. Można powiedzieć, że~algorytm ,,uczy się'' wtedy na~pamięć, co nie jest oczekiwanym rezultatem, ponieważ~staje się on wtedy również mniej skuteczny dla danych innych niż uczące. Model jest wtedy niezdolny do~generalizacji, a~właśnie po~to został stworzony, aby~można było do~użyć na~danych, których wcześniej ,,nie widział''. Analogicznie, można spotkać się też z~problemem niedouczenia \textit{underfitting}. Oznacza to, że~funkcja, którą chcemy modelować jest zbyt skomplikowana dla naszego modelu, co wynika z~tego, że~posiada on zbyt niską liczbę stopni swobody. Obie sytuacje zostały przedstawione na~rysunku \ref{overfitting}.
@@ -162,9 +155,8 @@ Przeuczenie (\textit{overfitting}) jest jednym z~głównych problemów na~który
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.8]{res/overfitting.png}
-\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji\footnotemark \label{overfitting}} 
+\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji. Źródło:\url{http://mlwiki.org/index.php/Overfitting}\label{overfitting}} 
 \end{figure}
-\footnotetext{\url{http://mlwiki.org/index.php/Overfitting}}
 
 \subsection{Tablica pomyłek i krzywa ROC}
 Tablica pomyłek może posłużyć do~oceny jakości klasyfikacji binarnej. Rozważając taką klasyfikację, model może odpowiedzieć tylko na~dwa sposoby: pozytywnie oraz~negatywnie. Odpowiedź może być błędna lub~poprawna, co daje cztery możliwości. Na~tej podstawie otrzymujemy cztery wielkości:
@@ -190,9 +182,9 @@ przy czym $T$ oraz~$N$ oznaczają kolejno wszystkie próbki pozytywne oraz~wszys
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/roc3.png}
-\caption[Caption for LOF]{Krzywa ROC\footnotemark \label{roc}} 
+\caption[Caption for LOF]{Krzywa ROC. Źródło:\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}\label{roc}} 
 \end{figure}
-\footnotetext{\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}}
+
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -249,9 +241,9 @@ We wszystkich algorytmach uczenia maszynowego występują parametry, które~nale
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/cv.jpg}
-\caption[Caption for LOF]{Przykład walidacji krzyżowej\footnotemark} \label{cv} 
+\caption[Caption for LOF]{Przykład walidacji krzyżowej. Źródło: \url{https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg}} \label{cv} 
 \end{figure}
-\footnotetext{\url{https://upload.wikimedia.org/wikipedia/commons/1/1c/K-fold_cross_validation_EN.jpg}}
+
 
 \subsubsection{Ekstrakcja cech}
 Ekstrakcja cech jest nieodwracalną operacją na~danych, które~posiadamy. Polega ona na~transformacji atrybutów w~taki sposób, aby~zmniejszyć ich ilość. Zawsze wiąże się to z~utratą informacji, ponieważ~nie jest możliwe reprezentacja tej samej informacji przy zmniejszonej wymiarowości danych pomijając sytuację, gdy atrybuty są od~siebie liniowo zależne. Zmniejszanie wymiarowości danych przez~eliminacje redundantnych atrybutów nazywamy z~kolei redukcją cech. 
@@ -261,9 +253,8 @@ Analiza głównych składowych (\textit{principal component analysis}, PCA) jest
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.5]{res/pca.png}
-\caption[Caption for LOF]{Graficzna ilustracja analizy głównych składowych\footnotemark} \label{pca} 
+\caption[Caption for LOF]{Graficzna ilustracja analizy głównych składowych. Źródło:\url{https://sebastianraschka.com/faq/docs/lda-vs-pca.html}} \label{pca} 
 \end{figure}
-\footnotetext{\url{https://sebastianraschka.com/faq/docs/lda-vs-pca.html}}
 
 \paragraph{LDA}\mbox{}\\
 Liniowa analiza dyskryminacyjna (\textit{linear discrimant analysis, LDA}) jest metodą, która~działa w~podobny sposób do~PCA. Również w~tej metodzie na~celu mamy znalezienie nowego układu współrzędnych dla naszych danych. Różnica jednak polega na~tym, że~zamiast maksymalizować wariancję, maksymalizujemy separowalność kategorii rzutując dane na~konkretną oś. Można wywnioskować również w~takim razie, że~w~przeciwieństwie do~PCA, w~tej metodzie pod~uwagę są również klasy konkretnych rekordów. Operacja została zilustrowana na~rysunku \ref{lda}. 
@@ -271,6 +262,5 @@ Liniowa analiza dyskryminacyjna (\textit{linear discrimant analysis, LDA}) jest 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.5]{res/lda.png}
-\caption[Caption for LOF]{Graficzna ilustracja liniowej analizy dyskryminacyjna\footnotemark} \label{lda} 
+\caption[Caption for LOF]{Graficzna ilustracja liniowej analizy dyskryminacyjna. Źródło:\url{https://qph.ec.quoracdn.net/main-qimg-daf30ce6ecf85035af12e97659108f0a}} \label{lda} 
 \end{figure}
-\footnotetext{\url{https://qph.ec.quoracdn.net/main-qimg-daf30ce6ecf85035af12e97659108f0a}}
