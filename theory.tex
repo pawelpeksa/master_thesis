@@ -102,15 +102,13 @@ W~każdej warstwie może znajdować się dowolna ilość neuronów. Przykład si
 \caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa. Źródło:\url{https://2ml4pa.bn1303.livefilestore.com/y2p6no6Dn0weHW3FG9tceTUS9lohx5ldcxvFZRhKdbeFQi2kntad_77gKeKIC-INcsFRCvGI-_DY9lMdZzaX8jkSHDvqlcT3qRnftpAt7esi4s/1.PNG?psid=1}\label{net}} 
 \end{figure}
 \noindent
-W~każdej iteracji uczenia sieci, na~wejście podawany są dane. W~zależności o~odpowiedzi otrzymanej przez~sieć przeprowadzana jest poprawa wag. Po~przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby~poprawnie odpowiadać na~kolejne sygnały wejściowe. W~ogólności mówimy o~minimalizacji błędu sieci $Q$ w~zależności od~wag sieci. W~równaniu aktualizującym wagi występuję również współczynnik $\eta$, który~jest tzw. współczynnikiem uczenia, który~zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z~parametrów modelu, który~należy wyznaczyć. Kolejnym z~parametrów tego modelu jest liczba neuronów w~warstwie ukrytej. Liczba neuronów w~warstwie wejściowej zależy od~liczby atrybutów naszych danych, natomiast wyjściowej od~tego na~ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które~powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o~jednej warstwie. W~celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w~tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od~warstwy wyjściowej. Dla neuronów w~warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do~których dany neuron wysłał swój sygnał. Sztuczne sieci neuronowe są często określane jako metoda typu czarnej skrzynki (\textit{black-box}). Po przeprowadzeniu uczenia, ciężko jest wyekstrahować wiedzę nabytą przez model i przedstawić ją w zrozumiały sposób, aczkolwiek jest to też tematem rozważanym przez naukowców \cite{blacboxann}. Dużo bardziej jest to utrudnione, ze względu na złożoność, w przypadku głębokich sieci neuronowych opisanych w kolejnym podrozdziale.
+W~każdej iteracji uczenia sieci, na~wejście podawany są dane. W~zależności o~odpowiedzi otrzymanej przez~sieć przeprowadzana jest poprawa wag. Po~przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby~poprawnie odpowiadać na~kolejne sygnały wejściowe. W~ogólności mówimy o~minimalizacji błędu sieci $Q$ w~zależności od~wag sieci. W~równaniu aktualizującym wagi występuję również współczynnik $\eta$, który~jest tzw. współczynnikiem uczenia, który~zmniejsza wprowadzane poprawy wag sieci. Dzięki temu współczynnikowi proces uczenia przebiega bardziej optymalnie. Jest on jednym z~parametrów modelu, który~należy wyznaczyć. Kolejnym z~parametrów tego modelu jest liczba neuronów w~warstwie ukrytej. Liczba neuronów w~warstwie wejściowej zależy od~liczby atrybutów naszych danych, natomiast wyjściowej od~tego na~ile kategorii dane są klasyfikowane. Pierwsze algorytmy uczenia, które~powstały potrafiły przeprowadzić uczenie sieci neuronowej tylko o~jednej warstwie. W~celu uczenia sieci wielowarstwowych powstał algorytm wstecznej propagacji. Błąd dla poszczególnych neuronów jest w~tym algorytmie obliczany ,,od przodu'' to znaczy zaczynając od~warstwy wyjściowej. Dla neuronów w~warstwie ukrytej błąd obliczany jako średnia ważona błędów neuronów do~których dany neuron wysłał swój sygnał. Sztuczne sieci neuronowe są często określane jako metoda typu czarnej skrzynki (\textit{black-box}). Po przeprowadzeniu uczenia, ciężko jest wyekstrahować wiedzę nabytą przez model i przedstawić ją w zrozumiały sposób, aczkolwiek jest to też tematem rozważanym przez naukowców \cite{blacboxann}. Znacznie utrudnione, ze względu na złożoność, w przypadku głębokich sieci neuronowych opisanych w kolejnym podrozdziale.
 
 \subsubsection{Głębokie sieci neuronowe}\label{dnn}
 Niniejszy rozdzial zostal napisany na~podstawie\cite{dnn1}.\\
 % https://stats.stackexchange.com/questions/182734/what-is-the-difference-between-a-neural-network-and-a-deep-neural-network
 % https://arxiv.org/pdf/1703.09039.pdf
-Ideą stojącą za~głębokimi sieciami neuronowymi jest tworzenie sieci, które~posiadają wiele warstw ukrytych. Wiele, to znaczy od~kilku do~nawet kilku tysięcy. W~tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a~bardzo często tylko jedna. Udowodnione zostało matematycznie, że~sieć o~takiej strukturze jest zdolna do~modelowania jakiejkolwiek funkcji pod~warunkiem występowania w~niej nieliniowych funkcji aktywacji w~neuronach, więc przez~długi okres czasu sieci o~większych rozmiarach nie były rozważane.W związku ze~wzrostem mocy obliczeniowej komputerów, a~także szerokim dostępie do~wszelkiego rodzaju danych nie jest jednak problemem stworzenie sieci o~wiele większych od~tradycyjnych. Okazało się, że~w~ten sposób otrzymane wyniki są znacznie lepsze i~sieci głębokie sieci stanowią kolejny przełom w~dziedzinie uczenia maszynowego.
-
-Najłatwiej objaśnić głębokie sieci neuronowe na~podstawie przykładu. W~przypadku tradycyjnych sieci neuronowych na~wejście sieci podawane są atrybuty, które~należy samemu określić. Są to wyznaczone matematycznie cechy w~zależności od~problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na~obrazie. Do~sieci neuronowej możemy podać w~takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że~sieć miałaby bardzo dużo wejść, a~co za~tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na~obrazie linii lub~okręgów oraz~wiele więcej. Przy operacji ekstrakcji cech z~obrazu następuję naturalnie pewna utrata informacji. W~przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na~wejście sieci podawany są dane w~stanie ,,surowym''. Pozwala to na~uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz~dobrze zbudowanej sieci pozwala na~znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w~stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na~rysunku \ref{dnnDiff}.
+Ideą stojącą za~głębokimi sieciami neuronowymi jest tworzenie sieci, które~posiadają wiele warstw ukrytych. Wiele, to znaczy od~kilku do~nawet kilku tysięcy. W~tradycyjnych sieciach neuronowych zazwyczaj występowało co najwyżej kilka warstw ukrytych, a~bardzo często tylko jedna. Udowodnione zostało, że~sieć o~jednej warstwie ukrytej posiadającej skończoną liczbę neuronów jest zdolna do~modelowania jakiejkolwiek funkcji pod~warunkiem występowania nieliniowych funkcji aktywacji w~neuronach \cite{anntheorem}, więc przez~długi okres czasu sieci o~większych rozmiarach nie były rozważane.W związku ze~wzrostem mocy obliczeniowej komputerów, a~także szerokim dostępie do~wszelkiego rodzaju danych nie jest jednak problemem stworzenie sieci o~wiele większych od~tradycyjnych. Okazało się, że~w~ten sposób otrzymane wyniki są znacznie lepsze i~sieci głębokie sieci stanowią kolejny przełom w~dziedzinie uczenia maszynowego. Najłatwiej objaśnić głębokie sieci neuronowe na~podstawie przykładu. W~przypadku tradycyjnych sieci neuronowych na~wejście sieci podawane są atrybuty, które~należy samemu określić. Są to wyznaczone matematycznie cechy w~zależności od~problemu. Przykładem takiej sytuacji możesz być rozpoznawanie konkretnych obiektów na~obrazie. Do~sieci neuronowej możemy podać w~takiej sytuacji konkretnie wyliczone cechy obrazu zamiast przekazywać wartość każdego piksela, co powodowałoby, że~sieć miałaby bardzo dużo wejść, a~co za~tym idzie, trudno byłoby ją nauczyć. Takimi cechami mogą być np. jasność obrazu, tekstura, wskaźnik występujących na~obrazie linii lub~okręgów oraz~wiele więcej. Przy operacji ekstrakcji cech z~obrazu następuję naturalnie pewna utrata informacji. W~przypadku głębokich sieci neuronowych nie dokonujemy ekstrakcji cech co jest zasadniczą różnicą. Na~wejście sieci podawany są dane w~stanie ,,surowym''. Pozwala to na~uniknięcie utraty informacji co przy odpowiedniej ilości danych oraz~dobrze zbudowanej sieci pozwala na~znacznie lepsze wyniki. Sieć podczas procesu uczenia jest w~stanie sama nauczyć się jakie cechy powinna rozpoznawać. Różnica ta została zilustrowana na~rysunku \ref{dnnDiff}.
 
 \begin{figure}[ht!]
 \centering
@@ -129,36 +127,35 @@ Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neur
 \caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w dwóch wymiarach. Źródło:\cite{nielsen}\label{cnn1}} 
 \end{figure}
 
-Wartością każdego neuronu wejściowego jest wynik operacji konwolucji. W~celu otrzymania wszystkich wejść należy ,,przesuwać'' maskę po~całym obrazie. W~zależności od~rozmiaru maski (zazwyczaj $3x3$, $5x5$ lub~$7x7$) otrzymujemy odpowiednią liczbę wejść sieci. Operacja ta została przedstawiona na~rysunku \ref{cnn1}. Należy wspomnieć, że~wagi wszystkich neuronów są wspólne. Można stwierdzić, że~w~ten sposób pierwsza warstwa służy do~wykrycia dokładnie jednej cechy obrazu. Jedna cecha na~jedną warstwę, to byłoby jednak za~mało, więc ostatecznie najlepiej przedstawić pojedyncza warstwę konwolucyjną w~trzech wymiarach, co można zobaczyć na~rysunku \ref{cnn2}.
-
+\noindent
+Wartością każdego neuronu wejściowego jest wynik operacji konwolucji. W~celu otrzymania wszystkich wejść należy ,,przesuwać'' maskę po~całym obrazie. W~zależności od~rozmiaru maski (zazwyczaj 3x3, 5x5 lub~7x7) otrzymujemy odpowiednią liczbę wejść sieci. Operacja ta została przedstawiona na~rysunku \ref{cnn1}. Należy wspomnieć, że~wagi wszystkich neuronów są wspólne. Można stwierdzić, że~w~ten sposób pierwsza warstwa służy do~wykrycia dokładnie jednej cechy obrazu. Jedna cecha na~jedną warstwę, to byłoby jednak za~mało, więc ostatecznie najlepiej przedstawić pojedyncza warstwę konwolucyjną w~trzech wymiarach, co można zobaczyć na~rysunku \ref{cnn2}.
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/cnn2.png}
 \caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach. Źródło:\cite{nielsen}\label{cnn2}} 
 \end{figure}
-
-W~sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także warstwy typu \textit{pooling}, które~pozwalają na~pomniejszenie obrazu, co z~kolei redukuje w~pewnym stopniu koszty związane z~obliczeniami. Jedną z~podstawowych wykorzystywanych technik jest tzw. \textit{max-pooling}. Ponownie używając maski dowolnego rozmiaru (zazwyczaj $2x2$) ,,przechodzimy'' po~całym obrazie, lecz tym razem wybierając do~warstwy po~operacji \textit{poolingu} piksel o~najwyższej wartości.
-
+\noindent
+W~sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także warstwy typu \textit{pooling}, które~pozwalają na~pomniejszenie obrazu, co z~kolei redukuje w~pewnym stopniu koszty związane z~obliczeniami. Jedną z~podstawowych wykorzystywanych technik jest tzw. \textit{max-pooling}. Ponownie używając maski dowolnego rozmiaru (zazwyczaj 2x2) ,,przechodzimy'' po~całym obrazie, lecz tym razem wybierając do~warstwy po~operacji \textit{poolingu} piksel o~najwyższej wartości.
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/pooling.png}
 \caption[Caption for LOF]{Warstwa typu \textit{pooling}. Źródło:\cite{nielsen}\label{pooling}} 
 \end{figure}
-
-Po~warstwach konwolucyjnych oraz~typu \textit{pooling}, których ilość jest arbitralna, następuję przejście do~tradycyjnych sieci neuronowych, gdzie dokonywana jest ostateczna klasyfikacja. Cała architektura przedstawiona została na~rysunku \ref{cnn3}.
+\noindent
+Po~warstwach konwolucyjnych oraz~typu \textit{pooling}, których ilość jest arbitralna, następuje przejście do~warstw w pełni połączonych (\textit{fully connected}) znanych z tradycyjnych sieci neuronowych, gdzie dokonywana jest ostateczna klasyfikacja. Kompletna architektura sieci konwolucyjnej została przedstawiona została na~rysunku \ref{cnn3}.
 
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14
 \includegraphics[scale=0.75]{res/cnn3.jpg}
-\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych. Źródło: \url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}label{cnn3}} 
+\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych. Źródło: \url{ https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14}\label{cnn3}} 
 \end{figure}
 
 
 \subsection{Przeuczenie}\label{overfitting_section}
-Przeuczenie (\textit{overfitting}) jest jednym z~głównych problemów na~który można napotkać podczas korzystania z~algorytmów uczenia maszynowego. W~pierwszym zetknięciu z~uczeniem maszynowym mogłoby się wydawać, że~im mniejszy błąd uzyskany podczas uczenia, tym lepiej. Okazuje się jednak, że~podczas uczenia, zwłaszcza gdy model posiada zbyt wysoką liczbę stopni swobody, algorytm dopasowuje się ściśle do~konkretnych danych, które~w~rzeczywistości są w~pewnym stopniu zaszumione. Można powiedzieć, że~algorytm ,,uczy się'' wtedy na~pamięć, co nie jest oczekiwanym rezultatem, ponieważ~staje się on wtedy również mniej skuteczny dla danych innych niż uczące. Model jest wtedy niezdolny do~generalizacji, a~właśnie po~to został stworzony, aby~można było do~użyć na~danych, których wcześniej ,,nie widział''. Analogicznie, można spotkać się też z~problemem niedouczenia \textit{underfitting}. Oznacza to, że~funkcja, którą chcemy modelować jest zbyt skomplikowana dla naszego modelu, co wynika z~tego, że~posiada on zbyt niską liczbę stopni swobody. Obie sytuacje zostały przedstawione na~rysunku \ref{overfitting}.
+Przeuczenie (\textit{overfitting}) jest jednym z~głównych problemów na~który można napotkać podczas korzystania z~algorytmów uczenia maszynowego. W~pierwszym zetknięciu z~uczeniem maszynowym mogłoby się wydawać, że~im mniejszy błąd uzyskany podczas uczenia, tym lepiej. Okazuje się jednak, że~podczas uczenia, zwłaszcza gdy model posiada zbyt wysoką liczbę stopni swobody, algorytm dopasowuje się ściśle do~konkretnych danych, które~w~rzeczywistości są w~pewnym stopniu zaszumione. Można powiedzieć, że~algorytm ,,uczy się'' wtedy na~pamięć, co nie jest oczekiwanym rezultatem, ponieważ~staje się on wtedy również mniej skuteczny dla danych innych niż uczące.  Model jest wtedy niezdolny do~generalizacji, a~właśnie po~to został stworzony, aby~można było do~użyć na~danych, których wcześniej ,,nie widział''. Analogicznie, można spotkać się też z~problemem niedouczenia \textit{underfitting}. Oznacza to, że~funkcja, którą chcemy modelować jest zbyt skomplikowana dla naszego modelu, co wynika z~tego, że~posiada on zbyt niską liczbę stopni swobody. Obie sytuacje zostały przedstawione na~rysunku \ref{overfitting}.
 
 \begin{figure}[ht!]
 \centering
@@ -167,33 +164,6 @@ Przeuczenie (\textit{overfitting}) jest jednym z~głównych problemów na~który
 \end{figure}
 
 \subsection{Tablica pomyłek i krzywa ROC}
-Tablica pomyłek może posłużyć do~oceny jakości klasyfikacji binarnej. Rozważając taką klasyfikację, model może odpowiedzieć tylko na~dwa sposoby: pozytywnie oraz~negatywnie. Odpowiedź może być błędna lub~poprawna, co daje cztery możliwości. Na~tej podstawie otrzymujemy cztery wielkości:
-\begin{itemize}
-\item ilość predykcji prawdziwie pozytywnych (\textit{true positive}, TP),
-\item ilość predykcji fałszywie negatywnych (\textit{false negative}, FN),
-\item ilość predykcji fałszywie pozytywna (\textit{false positive}, FP),
-\item ilość predykcji prawdziwie negatywnych (\textit{true negative}, TN).
-\end{itemize}
-Powyższe możliwości zostały zestawione w~tabeli \ref{table:confusionmatrix}. Idąc dalej możemy określić TPR(\textit{true positive rate}) oraz~FPR(\textit{false positive rate}):
-
-\begin{equation}
-TPR = \frac{TP}{P} = \frac{TP}{TP+FN} 
-\end{equation}
-\noindent
-oraz
-
-\begin{equation}
-FPR = \frac{FP}{N} = \frac{FP}{FP+TN},
-\end{equation}
-przy czym $T$ oraz~$N$ oznaczają kolejno wszystkie próbki pozytywne oraz~wszystkie próbki negatywne. Na~podstawie $TPR$ oraz~$FPR$ z~kolei istnieje możliwość wykreślenia krzywej ROC(\textit{Receiver Operating Characteristic}). W~celu wykreślenia krzywej ROC stworzony model powinien na~wyjściu zwracać prawdopodobieństwo  przynależności do~jednej z~dwóch klas. W~zależności od~ustalenia punktu odcięcia tj. wartości prawdopodobieństwa dla którego~stwierdzamy przynależność do~danej klasy otrzymujemy dwie wartości TPR oraz~FPR dla danego punktu odcięcia. Ostatecznie można określić krzywą ROC jako funkcję zależną od~punktu odcięcia, która~została przedstawiona na~rysunku \label{roc}. W~celu opisania jakości klasyfikatora jedną liczbą można posłużyć się także polem powierzchni pod~krzywą ROC.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=0.7]{res/roc3.png}
-\caption[Caption for LOF]{Krzywa ROC. Źródło:\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}\label{roc}} 
-\end{figure}
-
-
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 % \usepackage[table,xcdraw]{xcolor}
@@ -210,6 +180,35 @@ przy czym $T$ oraz~$N$ oznaczają kolejno wszystkie próbki pozytywne oraz~wszys
 \end{tabular}
 \caption{Tablica pomyłek} \label{table:confusionmatrix}
 \end{table}
+Tablica pomyłek może posłużyć do~oceny jakości klasyfikacji binarnej. Rozważając taką klasyfikację, model może odpowiedzieć tylko na~dwa sposoby: pozytywnie oraz~negatywnie. Odpowiedź może być błędna lub~poprawna, co daje cztery możliwości. Na~tej podstawie otrzymujemy cztery wielkości:
+\begin{itemize}
+\item ilość predykcji prawdziwie pozytywnych (\textit{true positive}, TP),
+\item ilość predykcji fałszywie negatywnych (\textit{false negative}, FN),
+\item ilość predykcji fałszywie pozytywna (\textit{false positive}, FP),
+\item ilość predykcji prawdziwie negatywnych (\textit{true negative}, TN).
+\end{itemize}
+
+\noindent
+Powyższe możliwości zostały zestawione w~tabeli \ref{table:confusionmatrix}. Idąc dalej możemy określić TPR(\textit{true positive rate}) oraz~FPR(\textit{false positive rate}):
+
+
+\begin{equation}
+TPR = \frac{TP}{P} = \frac{TP}{TP+FN} 
+\end{equation}
+\noindent
+oraz
+
+\begin{equation}
+FPR = \frac{FP}{N} = \frac{FP}{FP+TN},
+\end{equation}
+
+przy czym $T$ oraz~$N$ oznaczają kolejno wszystkie próbki pozytywne oraz~wszystkie próbki negatywne. Na~podstawie $TPR$ oraz~$FPR$ z~kolei istnieje możliwość wykreślenia krzywej ROC(\textit{Receiver Operating Characteristic}). W~celu wykreślenia krzywej ROC stworzony model powinien na~wyjściu zwracać prawdopodobieństwo  przynależności do~jednej z~dwóch klas. W~zależności od~ustalenia punktu odcięcia tj. wartości prawdopodobieństwa dla którego~stwierdzamy przynależność do~danej klasy otrzymujemy dwie wartości TPR oraz~FPR dla danego punktu odcięcia. Ostatecznie można określić krzywą ROC jako funkcję zależną od~punktu odcięcia, która~została przedstawiona na~rysunku \label{roc}. W~celu opisania jakości klasyfikatora jedną liczbą można posłużyć się także polem powierzchni pod~krzywą ROC.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{res/roc3.png}
+\caption[Caption for LOF]{Krzywa ROC. Źródło:\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}\label{roc}} 
+\end{figure}
 
 
 
@@ -233,7 +232,7 @@ Istnieje jednak kilka sposobów, które~pomagają radzić sobie w~sytuacji niski
 
 \subsection{Wykorzystane metody optymalizacji}
 Niniejszy podrozdział zawiera opis metod, które~zostały użyte w~tej pracy w~celu optymalizacji uczenia maszynowego. Wyniki 
-natomiast, przedstawione zostały w~rozdzaiel \ref{results}.
+natomiast, przedstawione zostały w~rozdziale \ref{results}.
 \subsubsection{Sztuczne powiększenie zbioru danych}
 Sztuczne powiększenie zbioru (\textit{data augmentation}) danych w~przypadku danych graficznych jest najłatwiejszą oraz~najpopularniejszą metodą, która~służy do~minimalizowania efektu przeuczenia\cite{dataaugment}. Polega ona na~transformacji danych tj. obrazów, przy zachowaniu ich kategorii. Często przekształcenia te związane są z~symetrią obrazu, lecz nie tylko. Wymienić można między innymi:
 \begin{itemize}
@@ -243,9 +242,9 @@ Sztuczne powiększenie zbioru (\textit{data augmentation}) danych w~przypadku da
 \item przeskalowanie,
 \item przycięcie obrazu.
 \end{itemize}
-
+Algorytm uczony na w ten sposób wygenerowanych obrazach cechuje się mniejszą podatnością na efekt przeuczenia. 
 \subsubsection{Walidacja krzyżowa}
-We wszystkich algorytmach uczenia maszynowego występują parametry, które~należy określić dla danego modelu predykcyjnego. W~zależności od~metody, oznaczają co innego, ale~w~każdym przypadku ważny jest optymalny ich dobór, aby~uzyskać jak~najlepszy wynik.W najbardziej podstawowym przypadku, zbiór danych, który~posiadamy, dzielimy na~dwie części tj. zbiór uczący oraz~testowy. Pierwszy z~nich służy do~uczenia, a~drugi do~określanie jakości stworzonego modelu. W~przypadku przeszukiwania przestrzeni parametrów modelu w~celu ich optymalnego doboru, kierujemy się wynikiem predykcji dla zbioru testowego. Jest to naturalne ze~względu na~występujący efekt przeuczenia dla danych uczących. Ocena na~wcześniej ,,niewidzianych'' przez~model danych będzie bardziej obiektywna. Przy takim rozwiązaniu jednak, pewna część informacji ze~zbioru testowego również ,,wycieka'' do~naszego modelu, więc jest również metodologicznie błędny podejście. Idealnym rozwiązaniem było podzielenie naszych danych na~zbiór uczący, testowy oraz~walidujący. Zbiór walidujący posłużyłby wtedy do~doboru optymalnych parametrów modelu, a~następnie zbiór testowym do~ostatecznej ewaluacji. Łatwo jednak wywnioskować, że~w~sytuacji, gdy ilość danych jest niska, tworzenie trzech osobnych zbiorów jest mało optymalnym rozwiązaniem, ponieważ~jeszcze mniej danych wykorzystane zostanie do~uczenia modelu. Rozwiązaniem tego problemu jest walidacjia krzyżowa (\textit{cross validation}). W~tej metodzie dzielimy zbiór który~posiadamy na~$k$ losowych części, a~następnie uczymy oraz~testujemy model $k$ razy przy czym za~każdym razem do~uczenia wykorzystujemy $k-1$ części danych, a~do testowania jedną część, która~nie została użyta do~uczenia modelu. Jako ostateczny wynik ewaluacji przyjmujemy średnią z~$k$ otrzymanych wyników. Korzystając z~tej metody, parametru modelu zostaną dobrane używając większej ilości danych minimalizując efekt przeuczenia. Takie podejście z~pewnością powoduje znacznie większe zapotrzebowanie na~zasoby obliczeniowe. W~skrajnym przypadku, gdy $k=N$, przy czym $N$ oznacza liczbę wszystkich rekordów, mówimy o~metodzie \textit{leave one out}. W~praktyce jednak stosuję się walidację krzyżową przy $k=10$. Graficzna ilustracja tej metody została przedstawiona na~rysunku \ref{cv}.
+We wszystkich algorytmach uczenia maszynowego występują parametry, które~należy określić dla danego modelu predykcyjnego. W~zależności od~metody, oznaczają co innego, ale~w~każdym przypadku ważny jest optymalny ich dobór, aby~uzyskać jak~najlepszy wynik.W najbardziej podstawowym przypadku, zbiór danych, który~posiadamy, dzielimy na~dwie części tj. zbiór uczący oraz~testowy. Pierwszy z~nich służy do~uczenia, a~drugi do~określanie jakości stworzonego modelu. W~przypadku przeszukiwania przestrzeni parametrów modelu w~celu ich optymalnego doboru, kierujemy się wynikiem predykcji dla zbioru testowego. Jest to naturalne ze~względu na~występujący efekt przeuczenia dla danych uczących. Ocena na~wcześniej ,,niewidzianych'' przez~model danych będzie bardziej obiektywna. Przy takim rozwiązaniu jednak, pewna część informacji ze~zbioru testowego również ,,wycieka'' do~naszego modelu, więc jest również metodologicznie błędny podejście. Idealnym rozwiązaniem było podzielenie naszych danych na~zbiór uczący, testowy oraz~walidujący. Zbiór walidujący posłużyłby wtedy do~doboru optymalnych parametrów modelu, a~następnie zbiór testowym do~ostatecznej ewaluacji. Łatwo jednak wywnioskować, że~w~sytuacji, gdy ilość danych jest niska, tworzenie trzech osobnych zbiorów jest mało optymalnym rozwiązaniem, ponieważ~jeszcze mniej danych wykorzystane zostanie do~uczenia modelu. Rozwiązaniem tego problemu jest walidacjia krzyżowa (\textit{cross validation}). W~tej metodzie dzielimy zbiór który~posiadamy na~$k$ losowych części, a~następnie uczymy oraz~testujemy model $k$ razy przy czym za~każdym razem do~uczenia wykorzystujemy $k-1$ części danych, a~do testowania jedną część, która~nie została użyta do~uczenia modelu. Jako ostateczny wynik ewaluacji przyjmujemy średnią z~$k$ otrzymanych wyników. Korzystając z~tej metody, parametru modelu zostaną dobrane używając większej ilości danych minimalizując efekt przeuczenia. Takie podejście z~pewnością powoduje znacznie większe zapotrzebowanie na~zasoby obliczeniowe. W~skrajnym przypadku, gdy $k=N$, przy czym $N$ oznacza liczbę wszystkich rekordów, mówimy o~metodzie \textit{leave one out}. W~praktyce jednak, stosuję się walidację krzyżową przy $k=10$, co jednak wciąż generuje bardzo dużo obliczeń. Graficzna ilustracja tej metody została przedstawiona na~rysunku \ref{cv}.
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/cv.jpg}
@@ -255,7 +254,7 @@ We wszystkich algorytmach uczenia maszynowego występują parametry, które~nale
 
 \subsubsection{Ekstrakcja cech}
 Ekstrakcja cech jest nieodwracalną operacją na~danych, które~posiadamy. Polega ona na~transformacji atrybutów w~taki sposób, aby~zmniejszyć ich ilość. Zawsze wiąże się to z~utratą informacji, ponieważ~nie jest możliwe reprezentacja tej samej informacji przy zmniejszonej wymiarowości danych pomijając sytuację, gdy atrybuty są od~siebie liniowo zależne. Zmniejszanie wymiarowości danych przez~eliminacje redundantnych atrybutów nazywamy z~kolei redukcją cech. 
-Ekstrakcja cech dokonywana jest zazwyczaj w~sytuacji, gdy ilość atrybutów danych jest zbyt duża w~stosunku do~ilości danych, które~posiadamy lub~atrybuty są zbyt niskiego poziomu, aby~dana metoda uczenia maszynowego była w~stanie modelować funkcję atrybutów. Druga przyczyna jednak zależy od~użytej metody, ponieważ~w~przypadku głębokich sieci neuronowych, pod~warunkiem dobrania odpowiednich parametrów oraz~architektury sieci, możemy spodziewać się lepszych wyników dla atrybutów niższego poziomu (przed zastosowaniem ekstrakcji cech) jak~zostało to opisane w~rozdziale \ref{dnn}. Można wyróżnić dwa podejścia do~ekstrakcji cech. Jedno przy wykorzystaniu metod matematycznych np. PCA lub~LDA opisanych poniżej. O~drugim podejściu mówimy natomiast w~sytuacji, gdy transformacja danych dokonywana jest przy użyciu dodatkowej wiedzy, którą posiadamy na~temat danych. Na~przykładzie obrazów możemy powiedzieć, że~uzyskanie z~nich informacji opisujących ich konkretne parametry mówiące nam np. o~krawędziach na~obrazie czy~istnieniu na~nim linii lub~okręgów, jest ekstrakcją cech. W~przypadku z~kolei dźwięku, cechami niskiego poziomu, można nazwać amplitudę w~funkcji czasu, natomiast cechą wysokiego poziomu np. wskaźnik zmiany znaku amplitudy.
+Ekstrakcja cech dokonywana jest zazwyczaj w~sytuacji, gdy ilość atrybutów danych jest zbyt duża w~stosunku do~ilości danych, które~posiadamy lub~atrybuty są zbyt niskiego poziomu, aby~dana metoda uczenia maszynowego była w~stanie modelować funkcję atrybutów. Druga przyczyna jednak zależy od~użytej metody, ponieważ~w~przypadku głębokich sieci neuronowych, pod~warunkiem dobrania odpowiednich parametrów oraz~architektury sieci, możemy spodziewać się lepszych wyników dla atrybutów niższego poziomu (przed zastosowaniem ekstrakcji cech) jak~zostało to opisane w~rozdziale \ref{dnn}. Można wyróżnić dwa podejścia do~ekstrakcji cech. Jedno przy wykorzystaniu metod matematycznych np. PCA lub~LDA, które został opisane poniżej. O~drugim podejściu mówimy natomiast w~sytuacji, gdy transformacja danych dokonywana jest przy użyciu dodatkowej wiedzy, którą posiadamy na~temat danych. Na~przykładzie obrazów możemy powiedzieć, że~uzyskanie z~nich informacji opisujących ich konkretne parametry mówiące nam np. o~krawędziach na~obrazie czy~istnieniu na~nim linii lub~okręgów, jest ekstrakcją cech. W~przypadku z~kolei dźwięku, cechami niskiego poziomu, można nazwać amplitudę w~funkcji czasu, natomiast cechą wysokiego poziomu np. wskaźnik zmiany znaku amplitudy.
 \paragraph{PCA}\mbox{}\\
 Analiza głównych składowych (\textit{principal component analysis}, PCA) jest metodą, która~jest z~powodzeniem wykorzystywana do~ekstrakcji cech. Jej działanie polega na~otrzymaniu kolejnych głównych składowych o~największej wariancji. W~praktyce można wyobrazić sobie, że~operacja ta obraca układ współrzędnych w~ten sposób, aby~zmaksymalizować wariancję. Każdy kolejna składowa powinna być ortogonalna do~poprzedniej w~celu utrzymania jak~największej niezależności zmiennych. Operacja została dla przypadku dwuwymiarowego została przedstawiona na~rysunku \ref{pca}. W~celu ekstrakcji cech, w~nowej przestrzeni brane pod~uwagę jest tylko arbitralnie dobrana liczba nowych atrybutów.
 \begin{figure}[ht!]
