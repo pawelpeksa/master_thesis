@@ -56,7 +56,7 @@ W~tym podrozdziale autor starał się porównać system uczenia maszynowego dzia
 \begin{equation*}
 \{200, 300, 400, 500, 600, 700, 800, 900, 1000\}. 
 \end{equation*}
-Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod dla wszystkich testowanych algorytmów. Należy zwrócić tutaj szczególną uwagę na fakt, że optymalizacja przy pomocy walidacji krzyżowej odbywa się na poziomie doboru odpowiednich parametrów modelu. Po określeniu parametrów modelu, bez względu na metodę, którą do tego wykorzystaliśmy, następuje uczenie oraz testowanie modelu, który będzie użyty w rzeczywistej sytuacji. W przypadku obu podejść, przy uczeniu oraz walidacji docelowego modelu, użyta zostaje dokładnie taka sama ilość danych. W przypadku tradycyjnego podejścia zbiór danych został podzielony na zbiór uczący stanowiący 60\% wszystkich danych, zbiór testowy stanowiący 20\% wszystkich danych oraz zbiór walidujący - również 20\% wszystkich danych. W przypadku walidacji krzyżowej, występowały tylko dwa zbiory tj. zbiór uczący oraz zbiór walidacyjny stanowiące kolejno 80\% oraz 20\% wszystkich danych. % Porównanie użytej ilości danych zostało przedstawione na rysunku \ref{cvdata}.
+Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod dla wszystkich testowanych algorytmów. Należy zwrócić tutaj szczególną uwagę na fakt, że optymalizacja przy pomocy walidacji krzyżowej odbywa się na poziomie doboru odpowiednich parametrów modelu. Po określeniu parametrów modelu, bez względu na metodę, którą do tego wykorzystaliśmy, następuje uczenie oraz testowanie modelu, który będzie użyty w rzeczywistej sytuacji. W przypadku obu podejść, przy uczeniu oraz walidacji docelowego modelu, użyta zostaje dokładnie taka sama ilość danych. W przypadku tradycyjnego podejścia zbiór danych został podzielony na zbiór uczący stanowiący 60\% wszystkich danych, zbiór testowy stanowiący 20\% wszystkich danych oraz zbiór walidujący - również 20\% wszystkich danych. W przypadku walidacji krzyżowej, występowały tylko dwa zbiory tj. zbiór uczący oraz zbiór walidacyjny stanowiące kolejno 80\% oraz 20\% wszystkich danych. Porównanie użytej ilości danych zostało przedstawione na rysunku \ref{cvdata}.
 
 \begin{figure}[ht!]
 \centering
@@ -65,6 +65,35 @@ Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod 
 \end{figure} 
 
 \subsubsection{Wyniki}
+\newcommand{\cvsize}{1}
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=\cvsize]{res/cv_ann.pdf}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=\cvsize]{res/cv_svm.pdf}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=\cvsize]{res/cv_forest.pdf}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=\cvsize]{res/cv_tree.pdf}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure}
+  
+
+
 \subsubsection{Wnioski}
 
 \subsection{Ekstrakcja cech przy użyciu metod matematycznych}
@@ -74,6 +103,47 @@ Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza g
 
 \subsubsection{Stworzone rozwiązanie}
 \subsubsection{Wyniki}
+
+\newcommand{\fesize}{0.45}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+
+\centering
+\includegraphics[scale=\fesize]{res/digits_300_all_LinearDiscriminantAnalysis.pdf}
+
+  
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+
+\centering
+\includegraphics[scale=\fesize]{res/digits_300_all_PCA.pdf}
+  
+\end{minipage}
+\caption[Caption for LOF]{Feature extraction - TODO: give label\label{higgsall}}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+
+\centering
+\includegraphics[scale=\fesize]{res/digits_600_all_LinearDiscriminantAnalysis.pdf}
+
+  
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+
+\centering
+\includegraphics[scale=\fesize]{res/digits_600_all_PCA.pdf}
+  
+\end{minipage}
+\caption[Caption for LOF]{Feature extraction - TODO: give label\label{higgsall}}
+\end{figure}
+
+
+
 \subsubsection{Wnioski}
 
 \subsection{Ekstrakcja cech przy użyciu ,,wiedzy''}
@@ -85,5 +155,23 @@ Stworzony system składał się z trzech elementów z których można wyróżni�
 
 
 \subsubsection{Wyniki}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.3]{res/all1.png}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure} 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.3]{res/all2.png}
+\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\end{figure} 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{res/higgssummary.pdf}
+\caption[Caption for LOF]{Higgs summary - TODO: give label \label{higgssummary}}
+\end{figure} 
+
 \subsubsection{Wnioski}
 
