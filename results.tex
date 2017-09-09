@@ -55,7 +55,7 @@ W~tym podrozdziale autor starał się porównać system uczenia maszynowego dzia
 \begin{equation*}
 \{200, 300, 400, 500, 600, 700, 800, 900, 1000\}. 
 \end{equation*}
-Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod dla wszystkich testowanych algorytmów. Należy zwrócić tutaj szczególną uwagę na fakt, że optymalizacja przy pomocy walidacji krzyżowej odbywa się na poziomie doboru odpowiednich parametrów modelu. Po określeniu parametrów modelu, bez względu na metodę, którą do tego wykorzystaliśmy, następuje uczenie oraz testowanie modelu, który będzie użyty w rzeczywistej sytuacji. W przypadku obu podejść, przy uczeniu oraz walidacji docelowego modelu, użyta zostaje dokładnie taka sama ilość danych. W przypadku tradycyjnego podejścia zbiór danych został podzielony na zbiór uczący stanowiący 60\% wszystkich danych, zbiór testowy stanowiący 20\% wszystkich danych oraz zbiór walidujący - również 20\% wszystkich danych. W przypadku walidacji krzyżowej, występowały tylko dwa zbiory tj. zbiór uczący oraz zbiór walidacyjny stanowiące kolejno 80\% oraz 20\% wszystkich danych. Porównanie użytej ilości danych zostało przedstawione na rysunku \ref{cvdata}.
+Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod dla wszystkich testowanych algorytmów. Należy zwrócić tutaj szczególną uwagę na fakt, że optymalizacja przy pomocy walidacji krzyżowej odbywa się na poziomie doboru odpowiednich parametrów modelu. Po określeniu parametrów modelu, bez względu na metodę, którą do tego wykorzystaliśmy, następuje uczenie oraz walidacja finalnego modelu. W przypadku obu podejść, przy uczeniu oraz walidacji docelowego modelu, użyta zostaje dokładnie taka sama ilość danych. Porównanie użytej ilości danych w obu przypadkach zostało przedstawione na rysunku \ref{cvdata}. W przypadku tradycyjnego podejścia zbiór danych został podzielony na zbiór uczący stanowiący 60\% wszystkich danych, zbiór testowy stanowiący 20\% wszystkich danych oraz zbiór walidujący - również 20\% wszystkich danych. W przypadku walidacji krzyżowej, występowały tylko dwa zbiory tj. zbiór uczący oraz zbiór walidacyjny stanowiące kolejno 80\% oraz 20\% wszystkich danych. 
 
 \begin{figure}[ht!]
 \centering
@@ -98,7 +98,12 @@ Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod 
 \subsection{Ekstrakcja cech przy użyciu metod matematycznych}
 
 \subsubsection{Opis problemu}
-Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza głównych składowych oraz~liniowa analiza dyskryminacyjna. Przetestowane zostały cztery algorytmy uczenia maszynowego tj. maszyna wektorów nośnych, sztuczne sieci neuronowe, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Wykorzystanym zbiorem danych był zbiór o~nazwie \textit{digits} dostępny w~bibliotece scikit-learn. Posiada on 64 atrybuty. Obliczenia przeprowadzone zostały na~liczbie danych wynoszącej kolejno 300 oraz~600. Zmniejszana była kolejno liczba atrybutów aż do~momentu, gdy zbiór posiadał jeden atrybut. W~każdym przypadku przeprowadzane były obliczenia w~celu określenia skuteczności danej metody na~zbiorze danych po~zastosowaniu na~nim ekstrakcji cech w~celu określenia czy~operacja ta pomaga w~otrzymaniu wyższej skuteczności.
+Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza głównych składowych oraz~liniowa analiza dyskryminacyjna. Przetestowane zostały cztery algorytmy uczenia maszynowego tj. maszyna wektorów nośnych, sztuczne sieci neuronowe, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Wykorzystanym zbiorem danych był zbiór o~nazwie \textit{digits} dostępny w~bibliotece Scikit-Learn\footnote{\url{http://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html}}. Posiada on 64 atrybuty odpowiadające poszczególnym pikselom na obrazie o rozmiarach 8x8. Każdy rekord zbioru reprezentuje jeden obraz przedstawiający jedną cyfrę. Cały zbiór podzielony jest na 10 klas odpowiadających kolejnym cyfrom. Eksperyment polegał na kolejno:
+\begin{enumerate}
+\item przeprowadzeniu optymalizacji parametrów modeli dla poszczególnych metod,
+\item uczeniu oraz testowaniu systemu,
+\end{enumerate}
+w zależności od liczby rekordów oraz liczby atrybutów zbioru. Liczba rekordów dla których przeprowadzone zostały testy wynosiła 300 oraz~600. Obliczenia przeprowadzone zostały dla liczby atrybutów początkowo wynoszącej 64, która kolejno była zmniejszana wykorzystując PCA oraz LDA, aż do momentu gdy wynosiła 1. Celem było określenie czy, oraz na ile, ekstrakcja cech może pomóc w otrzymaniu wyższej skuteczności przy uczeniu maszynowym.
 
 \subsubsection{Stworzone rozwiązanie}
 \subsubsection{Wyniki}
@@ -120,7 +125,7 @@ Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza g
 \includegraphics[scale=\fesize]{res/digits_300_all_PCA.pdf}
   
 \end{minipage}
-\caption[Caption for LOF]{Feature extraction - TODO: give label\label{higgsall}}
+\caption[Caption for LOF]{Zależność skuteczności od liczby wykorzystanych atrybutów przy użyciu 300 rekordów do stworzenia systemu\label{fe_300}}
 \end{figure}
 
 \begin{figure}
@@ -138,7 +143,7 @@ Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza g
 \includegraphics[scale=\fesize]{res/digits_600_all_PCA.pdf}
   
 \end{minipage}
-\caption[Caption for LOF]{Feature extraction - TODO: give label\label{higgsall}}
+\caption[Caption for LOF]{Zależność skuteczności od liczby wykorzystanych atrybutów przy użyciu 600 rekordów do stworzenia systemu\label{fe_600}}
 \end{figure}
 
 
@@ -147,29 +152,29 @@ Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza g
 
 \subsection{Ekstrakcja cech przy użyciu ,,wiedzy''}
 \subsubsection{Opis problemu}
-W~niniejszym podrozdziale rozważanym zagadnieniem była ekstrakcja cech przy użyciu ,,wiedzy'' polegająca transformacji danych do~przestrzeni o~mniejszej wymiarowości przy wykorzystaniu wiedzy, którą posiadamy na~temat naszych danych. Pomysł na~ten eksperyment został zaczerpnięty z~\cite{higgs1}. Wykorzystane zostały także dane opisane w~artykule, które~są danymi zebranymi z~detektorów cząstek ulokowanych w~Wielkim Zderzaczu Hadronów (\textit{Large Hadron Collider}, LHC) będącym największym na~świecie akceleratorem cząstek, który~ulokowany jest w~Europejskim Ośrodku Badań Jądrowych CERN w~pobliżu Genewy. Głównym celem działania LHC jest zgłębienie wiedzy na~temat cząstek elementarnych. W~celu izolacji sygnału od~tła w~przypadku posiadania danych z~odpowiednich detektorów szeroko wykorzystywane jest uczenie maszynowe. Artykuł opisuje wykorzystanie głębokich sieci neuronowych dla problemu wyodrębnienia cząstki Higgsa. Udostępnione dane zawierają 11 milionów rekordów dla których określonych jest 21 cech fizycznych tzw. niskiego poziomu. Każdy rekord opisany jest także za~pomocą 7 atrybutów wysokiego poziomu, które~obliczone zostały na~podstawie cech niskiego poziomu. Celem obliczeń było zobrazowanie faktu, iż~poniżej pewnej ilości danych, użycie głębokich sieci neuronowych z wykorzystaniem cech niskiego poziomu daje gorsze wyniki niż tradycyjne algorytmy uczenia przy wykorzystaniu cech wysokiego poziomu. Obok głębokiej sieci neuronowej, wykorzystane zostały algorytmy takiej jak~tradycyjne sieć neuronowa, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Dla wszystkich wymienionych tradycyjnych algorytmów uczenia maszynowego przeprowadzona została optymalizacja parametrów. W~przypadku głębokiej sieci neuronowej nie miało to nie miejsca ze~względu na~bardzo długi czas uczenia. W~każdym przypadku proces uczenia oraz testowania przeprowadzony został dwa razy tj. dla cech wysokiego poziomu oraz~dla cech niskiego poziomu.
+W~niniejszym podrozdziale rozważanym zagadnieniem była ekstrakcja cech przy użyciu ,,wiedzy'', która polegaa na transformacji danych do~przestrzeni o~mniejszej wymiarowości przy wykorzystaniu wiedzy, którą posiadamy na~temat naszych danych. Pomysł na~ten eksperyment został zaczerpnięty z~pracy~\cite{higgs1}. Wykorzystane zostały także dane opisane w~artykule, które~są danymi zebranymi z~detektorów cząstek ulokowanych w~Wielkim Zderzaczu Hadronów (\textit{Large Hadron Collider}, LHC) będącym największym na~świecie akceleratorem cząstek, który~ulokowany jest w~Europejskim Ośrodku Badań Jądrowych CERN w~pobliżu Genewy. Głównym celem działania LHC jest zgłębienie wiedzy na~temat cząstek elementarnych. W~celu izolacji sygnału od~tła w~przypadku posiadania danych z~odpowiednich detektorów szeroko wykorzystywane jest uczenie maszynowe. Artykuł opisuje wykorzystanie głębokich sieci neuronowych dla problemu wyodrębnienia cząstki Higgsa. Udostępnione dane zawierają 11 milionów rekordów dla których określonych jest 21 cech fizycznych tzw. niskiego poziomu. Każdy rekord opisany jest także za~pomocą 7 atrybutów wysokiego poziomu, które~obliczone zostały na~podstawie cech niskiego poziomu. Celem obliczeń było pokazanie, że~poniżej pewnej ilości danych, użycie głębokich sieci neuronowych z wykorzystaniem cech niskiego poziomu daje gorsze wyniki niż tradycyjne algorytmy uczenia przy wykorzystaniu cech wysokiego poziomu. Obok głębokiej sieci neuronowej, wykorzystane zostały algorytmy takiej jak~tradycyjne sieć neuronowa, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Dla wszystkich wymienionych tradycyjnych algorytmów uczenia maszynowego przeprowadzona została optymalizacja parametrów. W~przypadku głębokiej sieci neuronowej nie miało to nie miejsca ze~względu na~bardzo długi czas uczenia. W przypadku wszystkich metod obliczenia przeprowadzone zostały dla cech wysokiego oraz niskiego poziomu, a także dla różnej ilości danych, które~były fragmentami całego udostępnionego zbioru. Rozważone zostały następujące ułamki całego zbioru: $a=\{0,001; 0,005; 0,01; 0,05; 0,1; 0,2; 0,3; 0,4; 0,5\}$. 
 
 \subsubsection{Stworzone rozwiązanie}
-Stworzony system składał się z trzech elementów z których można wyróżnić: HiggsModel, Optimizer oraz Configuration. Były odpowiedzialne kolejno za tworzenie głębokie sieci neuronowej (oparty na \cite{higgs2}), optymalizację parametrów dla poszczególnych algorytmów oraz konfiguracji programu. W przypadku głębokiej sieci neuronowej, wykorzystana została sieć posiadająca 6 warstw ukrytych po~500 neuronów w~każdej. Obliczenia zostały przeprowadzone dla różnej liczby rekordów, które~były fragmentami całego udostępnionego zestawu danych. Rozważone zostały następujące ułamki całego zbioru: $\{0,001; 0,005; 0,01; 0,05; 0,1; 0,2; 0,3; 0,4; 0,5\}$. 
+Stworzony system składał się z trzech elementów z których można wyróżnić: HiggsModel, Optimizer oraz Configuration. Były odpowiedzialne kolejno za tworzenie głębokie sieci neuronowej (oparty na pracy \cite{higgs2}), optymalizację parametrów dla poszczególnych algorytmów oraz konfiguracji programu. W przypadku głębokiej sieci neuronowej, wykorzystana została sieć posiadająca 6 warstw ukrytych po~500 neuronów w~każdej. 
 
 
 \subsubsection{Wyniki}
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.3]{res/all1.png}
-\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\caption[Caption for LOF]{Krzywa ROC dla $a=\{0.001, 0.005, 0.01, 0.05, 0.1\}$\label{higgsall1}}
 \end{figure} 
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.3]{res/all2.png}
-\caption[Caption for LOF]{Higgs all - TODO: give label\label{higgsall}}
+\caption[Caption for LOF]{Krzywa ROC dla $a=\{0.2, 0.3, 0.4, 0.5\}$\label{higgsall2}}
 \end{figure} 
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.8]{res/higgssummary.pdf}
-\caption[Caption for LOF]{Higgs summary - TODO: give label \label{higgssummary}}
+\caption[Caption for LOF]{Porównanie AUC ROC w zależności od rodzaju wykorzystanych cech dla wszystkich testowanych metod\label{higgssummary}}
 \end{figure} 
 
 \subsubsection{Wnioski}
