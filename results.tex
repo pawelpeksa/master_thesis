@@ -42,14 +42,14 @@ W~tabeli \ref{table:catdogs} przedstawione zostały wyniki dla sieci uruchamiane
 \hline
 Skuteczność uzyskana przy wykorzystaniu sztucznego powielania danych & $72\% \pm 2\%$ \\
 \hline 
-Skuteczność uzyskana bez wykorzystania sztucznego powielania danych & $69\% \pm 1\%$ \\
+Skuteczność uzyskana bez wykorzystania sztucznego powielania danych & $69\% \pm 2\%$ \\
 \hline 
  \end{tabular}
  \caption{Porównanie wyników z~zastosowaniem metody sztucznego powielania danych} \label{table:catdogs}
 \end{table}
 
 \subsubsection{Wnioski}
-
+Sztuczne powiększanie zbioru danych, w analizowanym przypadku nie przyniosło spektakularnej poprawy. Jest to jednak wciąż 2~\%, które nie kosztuje zbyt wiele. Należy zwrócić uwagę też na to, iż w rzeczywistym przypadku operacja ta może przynieść więcej korzyści pod warunkiem odpowiedniego doboru jej parametrów, co nie zostało przeprowadzone w tym przypadku ze względu na ograniczone zasoby. 
 \subsection{Walidacja krzyżowa}\label{cvChapter}
 \subsubsection{Opis problemu}
 W~tym podrozdziale autor starał się porównać system uczenia maszynowego działający przy zastosowaniu walidacji krzyżowej oraz~tradycyjnego podejścia w którym zbiór danych jest dzielony na~zbiór uczący, testowy oraz~walidacyjny. Przeprowadzona została kolejno optymalizacja parametrów dla czterech algorytmów tj. maszyna wektorów nośnych, sztuczne sieci neuronowe, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. W~każdym przypadku optymalizacja parametrów modelu została przeprowadzona za~pomocą metody walidacji krzyżowej oraz~wg tradycyjnego podejścia.  Algorytmy były testowane na~sztucznie wygenerowanych zbiorze zawierającym 7 atrybutów oraz~liczbę rekordów zawierającą się w zbiorze$ \{200, 500, 1000, 1500, 2000\}.$ Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod dla wszystkich testowanych algorytmów. Należy zwrócić tutaj szczególną uwagę na fakt, że optymalizacja przy pomocy walidacji krzyżowej odbywa się na poziomie doboru odpowiednich parametrów modelu. Po określeniu parametrów modelu, bez względu na metodę, którą do tego wykorzystaliśmy, następuje uczenie oraz walidacja finalnego modelu. W przypadku obu podejść, przy uczeniu oraz walidacji docelowego modelu, użyta zostaje dokładnie taka sama ilość danych. Porównanie użytej ilości danych w obu przypadkach zostało przedstawione na rysunku \ref{cvdata}. W przypadku tradycyjnego podejścia zbiór danych został podzielony na zbiór uczący stanowiący 60\% wszystkich danych, zbiór testowy stanowiący 20\% wszystkich danych oraz zbiór walidujący - również 20\% wszystkich danych. W przypadku walidacji krzyżowej, występowały tylko dwa zbiory tj. zbiór uczący oraz zbiór walidujący stanowiące kolejno 80\% oraz 20\% wszystkich danych. W celu uzyskania statystyki, obliczenia dla każdej metody dla konkretnej liczby rekordów powtórzone zostały 10 razy.
@@ -112,6 +112,20 @@ Stworzony system składał się z komponentów takich jak Main, Optimizer oraz C
 
 \subsubsection{Wyniki}
 Wyniki dla obliczeń przeprowadzonych dla liczby rekordów wynoszącej 300 zostały na rysunku \ref{fe_300}, natomiast dla liczby rekordów wynoszącej 600 na rysunku \ref{fe_600}.
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Najlepsza skuteczność&Skuteczność przed redukcją cech & Liczba rekordów & Metoda redukcji\\
+\hline
+1 & Najlepsza skuteczność & 300\\
+\hline 
+1 & Najlepsza skuteczność & 300\\
+\hline 
+ \end{tabular}
+ \caption{Najlepsze wyniki dla ekstrakcji cech przy użyciu metod matematycznych} \label{table:catdogs}
+\end{table}
 
 \newcommand{\fesize}{0.45}
 
