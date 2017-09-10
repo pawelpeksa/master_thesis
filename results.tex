@@ -63,6 +63,7 @@ Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod 
 \caption[Caption for LOF]{Wykorzystanie danych w zleżności od zastosowanej metody doboru parametrów modelu\label{cvdata}}
 \end{figure} 
 
+\subsubsection{Stworzone rozwiązanie}
 \subsubsection{Wyniki}
 \newcommand{\cvsize}{1}
 
@@ -70,25 +71,25 @@ Następnie porównane zostały wyniki dla parametrów wyznaczonych wg obu metod 
 \begin{figure}
 \centering
 \includegraphics[scale=\cvsize]{res/cv_ann.pdf}
-\caption[Caption for LOF]{Porównanie optymalizacji parametrów modelu przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla sztucznych sieci neuronowych\label{cv_ann}}
+\caption[Caption for LOF]{Porównanie skuteczności modelu przy optymalizacji parametrów przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla sztucznych sieci neuronowych\label{cv_ann}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[scale=\cvsize]{res/cv_svm.pdf}
-\caption[Caption for LOF]{Porównanie optymalizacji parametrów modelu przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla maszyny wektorów wspierających\label{cv_svm}}
+\caption[Caption for LOF]{Porównanie skuteczności modelu przy optymalizacji parametrów przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla maszyny wektorów wspierających\label{cv_svm}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[scale=\cvsize]{res/cv_forest.pdf}
-\caption[Caption for LOF]{Porównanie optymalizacji parametrów modelu przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla lasu drzew decyzyjnych\label{cv_forest}}
+\caption[Caption for LOF]{Porównanie skuteczności modelu przy optymalizacji parametrów przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla lasu drzew decyzyjnych\label{cv_forest}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[scale=\cvsize]{res/cv_tree.pdf}
-\caption[Caption for LOF]{Porównanie optymalizacji parametrów modelu przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla drzewa decyzyjnego\label{cv_tree}}
+\caption[Caption for LOF]{Porównanie skuteczności modelu przy optymalizacji parametrów przy użyciu walidacji krzyżowej oraz tradycyjnego podejścia dla drzewa decyzyjnego\label{cv_tree}}
 \end{figure}
   
 
@@ -152,7 +153,7 @@ w zależności od liczby rekordów oraz liczby atrybutów zbioru. Liczba rekord�
 
 \subsection{Ekstrakcja cech przy użyciu ,,wiedzy''}
 \subsubsection{Opis problemu}
-W~niniejszym podrozdziale rozważanym zagadnieniem była ekstrakcja cech przy użyciu ,,wiedzy'', która polegaa na transformacji danych do~przestrzeni o~mniejszej wymiarowości przy wykorzystaniu wiedzy, którą posiadamy na~temat naszych danych. Pomysł na~ten eksperyment został zaczerpnięty z~pracy~\cite{higgs1}. Wykorzystane zostały także dane opisane w~artykule, które~są danymi zebranymi z~detektorów cząstek ulokowanych w~Wielkim Zderzaczu Hadronów (\textit{Large Hadron Collider}, LHC) będącym największym na~świecie akceleratorem cząstek, który~ulokowany jest w~Europejskim Ośrodku Badań Jądrowych CERN w~pobliżu Genewy. Głównym celem działania LHC jest zgłębienie wiedzy na~temat cząstek elementarnych. W~celu izolacji sygnału od~tła w~przypadku posiadania danych z~odpowiednich detektorów szeroko wykorzystywane jest uczenie maszynowe. Artykuł opisuje wykorzystanie głębokich sieci neuronowych dla problemu wyodrębnienia cząstki Higgsa. Udostępnione dane zawierają 11 milionów rekordów dla których określonych jest 21 cech fizycznych tzw. niskiego poziomu. Każdy rekord opisany jest także za~pomocą 7 atrybutów wysokiego poziomu, które~obliczone zostały na~podstawie cech niskiego poziomu. Celem obliczeń było pokazanie, że~poniżej pewnej ilości danych, użycie niskiego poziomu daje gorsze wyniki niż wykorzystanie cech wysokiego poziomu. Obok głębokiej sieci neuronowej, wykorzystane zostały algorytmy takiej jak~tradycyjne sieć neuronowa, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Dla wszystkich wymienionych tradycyjnych algorytmów uczenia maszynowego przeprowadzona została optymalizacja parametrów. W~przypadku głębokiej sieci neuronowej nie miało to nie miejsca ze~względu na~bardzo długi czas uczenia. W przypadku wszystkich metod obliczenia przeprowadzone zostały dla cech wysokiego oraz niskiego poziomu, a także dla różnej ilości danych, które~były fragmentami całego udostępnionego zbioru. Rozważone zostały następujące ułamki całego zbioru: $a=\{0,001; 0,005; 0,01; 0,05; 0,1; 0,2; 0,3; 0,4; 0,5\}$. 
+W~niniejszym podrozdziale rozważanym zagadnieniem była ekstrakcja cech przy użyciu ,,wiedzy'', która polegaa na transformacji danych do~przestrzeni o~mniejszej wymiarowości przy wykorzystaniu wiedzy, którą posiadamy na~temat naszych danych. Pomysł na~ten eksperyment został zaczerpnięty z~pracy~\cite{higgs1}. Wykorzystane zostały także dane opisane w~artykule, które~są danymi zebranymi z~detektorów cząstek ulokowanych w~Wielkim Zderzaczu Hadronów (\textit{Large Hadron Collider}, LHC) będącym największym na~świecie akceleratorem cząstek, który~ulokowany jest w~Europejskim Ośrodku Badań Jądrowych CERN w~pobliżu Genewy. Głównym celem działania LHC jest zgłębienie wiedzy na~temat cząstek elementarnych. W~celu izolacji sygnału od~tła w~przypadku posiadania danych z~odpowiednich detektorów szeroko wykorzystywane jest uczenie maszynowe. Artykuł opisuje wykorzystanie głębokich sieci neuronowych dla problemu wyodrębnienia cząstki Higgsa. Udostępnione dane zawierają 11 milionów rekordów dla których określonych jest 21 cech fizycznych tzw. niskiego poziomu. Każdy rekord opisany jest także za~pomocą 7 atrybutów wysokiego poziomu, które~obliczone zostały na~podstawie cech niskiego poziomu. Celem obliczeń było pokazanie, że~poniżej pewnej ilości danych, użycie niskiego poziomu daje gorsze wyniki niż wykorzystanie cech wysokiego poziomu. Obok głębokiej sieci neuronowej, wykorzystane zostały algorytmy takiej jak~tradycyjne sieć neuronowa, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Dla wszystkich wymienionych tradycyjnych algorytmów uczenia maszynowego przeprowadzona została optymalizacja parametrów. W~przypadku głębokiej sieci neuronowej nie miało to nie miejsca ze~względu na~bardzo długi czas uczenia. W przypadku wszystkich metod obliczenia przeprowadzone zostały dla cech wysokiego oraz niskiego poziomu, a także dla różnej ilości danych, które~były fragmentami całego udostępnionego zbioru. Rozważone zostały uładmki $a$ całego zbioru przy czym $a\in\{0,001; 0,005; 0,01; 0,05; 0,1; 0,2; 0,3; 0,4; 0,5\}$. 
 
 \subsubsection{Stworzone rozwiązanie}
 Stworzony system składał się z trzech elementów z których można wyróżnić: HiggsModel, Optimizer oraz Configuration. Były odpowiedzialne kolejno za tworzenie głębokie sieci neuronowej (oparty na pracy \cite{higgs2}), optymalizację parametrów dla poszczególnych algorytmów oraz konfiguracji programu. W przypadku głębokiej sieci neuronowej, wykorzystana została sieć posiadająca 6 warstw ukrytych po~500 neuronów w~każdej. 
