@@ -113,18 +113,115 @@ Stworzony system składał się z komponentów takich jak Main, Optimizer oraz C
 \subsubsection{Wyniki}
 Wyniki dla obliczeń przeprowadzonych dla liczby rekordów wynoszącej 300 zostały na rysunku \ref{fe_300}, natomiast dla liczby rekordów wynoszącej 600 na rysunku \ref{fe_600}.
 
+\definecolor{Gray}{gray}{0.8}
+\definecolor{White}{gray}{1}
+
 \begin{table}
 \centering
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-Najlepsza skuteczność&Skuteczność przed redukcją cech & Liczba rekordów & Metoda redukcji\\
+Skuteczność & Liczba cech & Liczba rekordów & metoda ekstrakcji & algorytm \\
 \hline
-1 & Najlepsza skuteczność & 300\\
-\hline 
-1 & Najlepsza skuteczność & 300\\
-\hline 
+\rowcolor{Gray}
+$0.087 \pm 0.009$ & $3$ & $ 300 $ & PCA & ann \\
+\hline
+\rowcolor{Gray}
+$0.001 \pm 0.002$ & $64$ & $ 300 $ & - & ann \\
+\hline
+\rowcolor{White}
+$0.09$ & $3$ & $ 300 $ & PCA & svm \\
+\hline
+\rowcolor{White}
+$0.02$ & $64$ & $ 300 $ & - & svm \\
+\hline
+\rowcolor{Gray}
+$0.11 \pm 0.01$ & $3$ & $ 300 $ & PCA & forest \\
+\hline
+\rowcolor{Gray}
+$0.033 \pm 0.003$ & $64$ & $ 300 $ & - & forest \\
+\hline
+\rowcolor{White}
+$0.12 \pm 0.01$ & $3$ & $ 300 $ & PCA & tree \\
+\hline
+\rowcolor{White}
+$0.052 \pm 0.003$ & $64$ & $ 300 $ & - & tree \\
+\hline
+\rowcolor{Gray}
+$0.29 \pm 0.03$ & $1$ & $ 300 $ & LDA & ann \\
+\hline
+\rowcolor{Gray}
+$0.22 \pm 0.01$ & $64$ & $ 300 $ & - & ann \\
+\hline
+\rowcolor{White}
+$0.27 $ & $4$ & $ 300 $ & LDA & svm \\
+\hline
+\rowcolor{White}
+$0.2 $ & $64$ & $ 300 $ & - & svm \\
+\hline
+\rowcolor{Gray}
+$0.31 \pm 0.02$ & $1$ & $ 300 $ & LDA & forest \\
+\hline
+\rowcolor{Gray}
+$0.21 \pm 0.05$ & $64$ & $ 300 $ & - & forest \\
+\hline
+\rowcolor{White}
+$0.32 \pm 0.01$ & $1$ & $ 300 $ & LDA & tree \\
+\hline
+\rowcolor{White}
+$0.18 \pm 0.01$ & $64$ & $ 300 $ & - & tree \\
+\hline
+\rowcolor{Gray}
+$0.73 \pm 0.03$ & $5$ & $ 600 $ & PCA & ann \\
+\hline
+\rowcolor{Gray}
+$0.46 \pm 0.02$ & $64$ & $ 600 $ & - & ann \\
+\hline
+\rowcolor{White}
+$0.685$ & $5$ & $ 600 $ & PCA & svm \\
+\hline
+\rowcolor{White}
+$0.5 $ & $64$ & $ 600 $ & - & svm \\
+\hline
+\rowcolor{Gray}
+$0.65 \pm 0.02$ & $5$ & $ 600 $ & PCA & forest \\
+\hline
+\rowcolor{Gray}
+$0.40 \pm 0.05$ & $64$ & $ 600 $ & - & forest \\
+\hline
+\rowcolor{White}
+$0.64 \pm 0.02$ & $5$ & $ 600 $ & PCA & tree \\
+\hline
+\rowcolor{White}
+$0.52 \pm 0.03$ & $64$ & $ 600 $ & - & tree \\
+\hline
+\rowcolor{Gray}
+$0.73 \pm 0.01$ & $3$ & $ 600 $ & LDA & ann \\
+\hline
+\rowcolor{Gray}
+$0.28 \pm 0.01$ & $64$ & $ 600 $ & - & ann \\
+\hline
+\rowcolor{White}
+$0.74$ & $3$ & $ 600 $ & LDA & svm \\
+\hline
+\rowcolor{White}
+$0.27$ & $64$ & $ 600 $ & - & svm \\
+\hline
+\rowcolor{Gray}
+$0.70 \pm 0.02$ & $3$ & $ 600 $ & LDA & forest \\
+\hline
+\rowcolor{Gray}
+$0.26 \pm 0.06$ & $64$ & $ 600 $ & - & forest \\
+\hline
+\rowcolor{White}
+$0.72 \pm 0.01$ & $3$ & $ 600 $ & LDA & tree \\
+\hline
+\rowcolor{White}
+$0.35 \pm 0.05$ & $64$ & $ 600 $ & - & tree \\
+\hline
+
+
  \end{tabular}
- \caption{Najlepsze wyniki dla ekstrakcji cech przy użyciu metod matematycznych} \label{table:catdogs}
+ \caption{Najlepsze uzyskane wyniki modeli uczonych przy wykorzystaniu zbioru danych po redukcji cech w porównaniu do modeli uczonych przed wykorzystaniem ekstrakcji cech} \label{table:featureExtraction}
 \end{table}
 
 \newcommand{\fesize}{0.45}
