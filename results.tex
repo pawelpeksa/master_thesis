@@ -91,16 +91,16 @@ Zbiorcze wyniki dla wszystkich testowanych wariantów zostały przedstawione w t
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
 liczba rekordów       & metoda   & tree & forest & svm & ann \\ \hline
-\multirow{2}{*}{200}     & holdout    & $ 49.14 \pm 6.2$ & $45.86 \pm 9.18$ & $47.71 \pm 5.83$ & $37.57 \pm 8.48$ \\ \cline{2-6} 
-                         & cv         & $52.14 \pm 5.16$ & $46.86 \pm 6.79$ & $48.71 \pm 6.27$ & $37.63 \pm 7.17$ \\ \hline
-\multirow{2}{*}{500}     & holdout    & $54.4 \pm 5.68$ & $54.97 \pm 4.98$ & $50.51 \pm 3.99$ & $44.74 \pm 3.02$ \\ \cline{2-6} 
-                         & cv         & $59.09 \pm 4.73$ & $60.34 \pm 3.55$ & $50.86 \pm 4.4$ & $45.2 \pm 1.72$ \\ \hline
-\multirow{2}{*}{1000}    & holdout    & $64.11 \pm 3.69$ & $62.4 \pm 2.89$ & $56.6 \pm 5.2$ & $50.4 \pm 3.86$ \\ \cline{2-6} 
-                         & cv         & $64.14 \pm 3.44$ & $67.51 \pm 4.03$ & $56.63 \pm 5.26$ & $49.77 \pm 3.43$ \\\hline
-\multirow{2}{*}{1500}    & holdout    &$ 69.24 \pm 2.72$ & $67.09 \pm 2.66$ & $58.36 \pm 3.8$ & $52.69 \pm 2.51$ \\ \cline{2-6} 
-                         & cv         & $69.11 \pm 2.02$ & $70.97 \pm 1.39$ & $58.46 \pm 3.79$ & $52.5 \pm 3.13$ \\ \hline
-\multirow{2}{*}{2000}    & holdout    & $67.74 \pm 4.52$ & $69.57 \pm 3.5$ & $58.34 \pm 6.08$ & $56.44 \pm 3.92$ \\ \cline{2-6} 
-                         & cv         & $67.74 \pm 4.49$ & $72.37 \pm 3.01$ & $58.24 \pm 6.14$ & $56.71 \pm 3.69$ \\ \hline
+\multirow{2}{*}{200}     & holdout    & $ 49,14 \pm 6,2$ & $45,86 \pm 9,18$ & $47,71 \pm 5,83$ & $37,57 \pm 8,48$ \\ \cline{2-6} 
+                         & cv         & $52,14 \pm 5,16$ & $46,86 \pm 6,79$ & $48,71 \pm 6,27$ & $37,63 \pm 7,17$ \\ \hline
+\multirow{2}{*}{500}     & holdout    & $54,4 \pm 5,68$ & $54,97 \pm 4,98$ & $50,51 \pm 3,99$ & $44,74 \pm 3,02$ \\ \cline{2-6} 
+                         & cv         & $59,09 \pm 4,73$ & $60,34 \pm 3,55$ & $50,86 \pm 4,4$ & $45,2 \pm 1,72$ \\ \hline
+\multirow{2}{*}{1000}    & holdout    & $64,11 \pm 3,69$ & $62,4 \pm 2,89$ & $56,6 \pm 5,2$ & $50,4 \pm 3,86$ \\ \cline{2-6} 
+                         & cv         & $64,14 \pm 3,44$ & $67,51 \pm 4,03$ & $56,63 \pm 5,26$ & $49,77 \pm 3,43$ \\\hline
+\multirow{2}{*}{1500}    & holdout    &$ 69,24 \pm 2,72$ & $67,09 \pm 2,66$ & $58,36 \pm 3,8$ & $52,69 \pm 2,51$ \\ \cline{2-6} 
+                         & cv         & $69,11 \pm 2,02$ & $70,97 \pm 1,39$ & $58,46 \pm 3,79$ & $52,5 \pm 3,13$ \\ \hline
+\multirow{2}{*}{2000}    & holdout    & $67,74 \pm 4,52$ & $69,57 \pm 3,5$ & $58,34 \pm 6,08$ & $56,44 \pm 3,92$ \\ \cline{2-6} 
+                         & cv         & $67,74 \pm 4,49$ & $72,37 \pm 3,01$ & $58,24 \pm 6,14$ & $56,71 \pm 3,69$ \\ \hline
 \end{tabular}
 \caption{Skuteczność modelu dla danych walidacyjnych w zależności od testowanego algorytmu uczenia maszynowego oraz wykorzystanej metody optymalizacji parametrów} \label{table:cv}
 \end{table}
@@ -272,8 +272,8 @@ $34.7 \%\pm 5.3\%$ & $64$ & $ 600 $ & - & tree \\
 \begin{tabular}{llllll}
                                                          &                                                              & \multicolumn{2}{c}{}                                                                                                                                    &  &  \\ \cline{3-4}
                                                          & \multicolumn{1}{l|}{}                                        & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} PCA}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} LDA}} &  &  \\ \cline{2-4}
-\multicolumn{1}{c|}{}                                    & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}300 rekordów} & \multicolumn{1}{l|}{$7.27 \%$}                                           & \multicolumn{1}{l|}{$9.53\%$}                                            &  &  \\ \cline{2-4}
-\multicolumn{1}{c|}{\multirow{-2}{*}{}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}600 rekordów} & \multicolumn{1}{l|}{$20.32 \%$}                                            & \multicolumn{1}{l|}{$43.47\%$}                                           &  &  \\ \cline{2-4}
+\multicolumn{1}{c|}{}                                    & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}300 rekordów} & \multicolumn{1}{l|}{$7,27 \%$}                                           & \multicolumn{1}{l|}{$9,53\%$}                                            &  &  \\ \cline{2-4}
+\multicolumn{1}{c|}{\multirow{-2}{*}{}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}600 rekordów} & \multicolumn{1}{l|}{$20,32 \%$}                                            & \multicolumn{1}{l|}{$43,47\%$}                                           &  &  \\ \cline{2-4}
                                                          &                                                              &                                                                                     &                                                                                     &  & 
 \end{tabular}
 \caption{Średnia poprawa skuteczności klasyfikacji w zależności od liczby danych oraz metody ekstrakcji} \label{table:averageFE}
@@ -331,7 +331,50 @@ Stworzony system składał się z trzech elementów z których można wyróżni�
 
 
 \subsubsection{Wyniki}
-Na rysunkach \ref{higgsall1} oraz \ref{higgsall2} przedstawione została krzywa ROC dla $a\in\{0.001, 0.005, 0.01, 0.05, 0.1\}$ w pierwszym przypadku oraz dla $a\in\{0.2, 0.3, 0.4, 0.5\}$ w drugim przypadku. Porównanie AUC ROC zostało natomiast przedstawione na rysunku \ref{higgssummary}.
+Na rysunkach \ref{higgsall1} oraz \ref{higgsall2} przedstawione została krzywa ROC dla $a\in\{0,001; 0,005; 0,01; 0,05; 0,1\}$  oraz dla $a\in\{0,2; 0,3; 0,4; 0,5\}$. AUC ROC dla wszystkich testowanych kombinacji zostało przedstawione w tabeli \ref{table:higgstable} oraz przedstawione na rysunku \ref{higgssummary}.
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+a                      & wykorzystane cechy       & tree & forest & ann & dnn \\ \hline
+
+\multirow{2}{*}{0,001} & niskiego poziomu   & $ 0,6 $ & $ 0,62 $ & $ 0,62 $ &$ 0,62 $ \\ \cline{2-6} 
+                       & wysokiego poziomu & $ 0,71 $ & $ 0,77 $ & $ 0,66 $ &$ 0,72 $ \\ \hline
+                       
+\multirow{2}{*}{0,005} & niskiego poziomu  & $ 0,63 $ & $ 0,63 $ & $ 0,63 $ &$ 0,67 $ \\ \cline{2-6} 
+                       & wysokiego poziomu & $ 0,74 $ & $ 0,75 $ & $ 0,69 $ &$ 0,77 $ \\ \hline
+                       
+\multirow{2}{*}{0,01}  & niskiego poziomu  & $ 0,64 $ & $ 0,64 $ & $ 0,63 $ &$ 0,7 $ \\ \cline{2-6} 
+                       & wysokiego poziomu & $ 0,74 $ & $ 0,75 $ & $ 0,7 $ &$ 0,77 $ \\ \hline
+                       
+\multirow{2}{*}{0,05}  & niskiego poziomu  & $ 0,66 $ & $ 0,64 $ & $ 0,64 $ &$ 0,76 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,75 $ & $ 0,74 $ & $ 0,7 $ &$ 0,78 $ \\ \hline
+                       
+\multirow{2}{*}{0,1}   & niskiego poziomu  &  $ 0,66 $ & $ 0,64 $ & $ 0,64 $ &$ 0,79 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,76 $ & $ 0,74 $ & $ 0,7 $ &$ 0,79 $ \\ \hline
+                       
+\multirow{2}{*}{0,2}   & niskiego poziomu  &  $ 0,67 $ & $ 0,64 $ & $ 0,64 $ &$ 0,81 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,77 $ & $ 0,74 $ & $ 0,7 $ &$ 0,79 $ \\ \hline
+                       
+\multirow{2}{*}{0,3}   & niskiego poziomu  &  $ 0,67 $ & $ 0,64 $ & $ 0,64 $ &$ 0,82 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,77 $ & $ 0,74 $ & $ 0,7 $ &$ 0,79 $ \\ \hline
+                       
+\multirow{2}{*}{0,4}   & niskiego poziomu  & $ 0,67 $ & $ 0,64 $ & $ 0,65 $ &$ 0,83 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,77 $ & $ 0,74 $ & $ 0,7 $ &$ 0,79 $ \\ \hline
+                       
+\multirow{2}{*}{0,5}   & niskiego poziomu  &  $ 0,68 $ & $ 0,64 $ & $ 0,64 $ &$ 0,83 $ \\ \cline{2-6} 
+                       & wysokiego poziomu &  $ 0,77 $ & $ 0,74 $ & $ 0,69 $ &$ 0,79 $ \\ \hline
+\end{tabular}
+
+\caption{Zestawienie AUC ROC dla testowanych metod w zależności od rodzaju wykorzystanych cech oraz ilości wykorzystanych danych}
+\label{table:higgstable}
+
+\end{table}
+
 
 \begin{figure}[ht!]
 \centering
