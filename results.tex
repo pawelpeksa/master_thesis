@@ -144,7 +144,7 @@ Analizując wyniki można stwierdzić, że poprawa skuteczności klasyfikacji pr
 \subsection{Ekstrakcja cech przy użyciu metod matematycznych}
 
 \subsubsection{Opis problemu}
-Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza głównych składowych oraz~liniowa analiza dyskryminacyjna. Przetestowane zostały cztery algorytmy uczenia maszynowego tj. maszyna wektorów nośnych, sztuczne sieci neuronowe, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Wykorzystanym zbiorem danych był zbiór o~nazwie \textit{digits} dostępny w~bibliotece Scikit-Learn\footnote{\url{http://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html}}. Posiada on 64 atrybuty odpowiadające poszczególnym pikselom na obrazie o rozmiarach 8x8. Każdy rekord zbioru reprezentuje jeden obraz przedstawiający jedną cyfrę. Cały zbiór podzielony jest na 10 klas odpowiadających kolejnym cyfrom. Eksperyment polegał na kolejno:
+Metodę wykorzystaną w celu ekstrakcji cech w ramach metod matematycznych była liniowa analiza dyskryminacyjna. Przetestowane zostały cztery algorytmy uczenia maszynowego tj. maszyna wektorów nośnych, sztuczne sieci neuronowe, las drzew decyzyjnych oraz~pojedyncze drzewo decyzyjne. Wykorzystanym zbiorem danych był zbiór o~nazwie \textit{iris} dostępny w~bibliotece Scikit-Learn\footnote{\url{http://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html}}. Posiada on 4 atrybuty, które są parametrami rozmiarów irysów 3 gatunków. Każdy rekord zbioru reprezentuje kwiat. Cały zbiór podzielony jest na odpowiednio 3 klasy. Eksperyment polegał na kolejno:
 \begin{itemize}
 
 \item przeprowadzeniu optymalizacji parametrów modeli dla poszczególnych metod,
@@ -152,180 +152,116 @@ Matematycznymi metodami wykorzystanymi do~ekstrakcji cech danych były analiza g
 
 \end{itemize}
 
-Powyższe kroki wykonane zostały w zależności od liczby rekordów oraz liczby atrybutów zbioru. Liczba rekordów dla których przeprowadzone zostały testy wynosiła 300 oraz~600. Obliczenia przeprowadzone zostały dla liczby atrybutów początkowo wynoszącej 64, która kolejno była zmniejszana wykorzystując PCA oraz LDA, aż do momentu gdy wynosiła 1. Celem było określenie czy, oraz na ile, ekstrakcja cech może pomóc w otrzymaniu wyższej skuteczności przy uczeniu maszynowym. Wszystkie obliczenia wykonane zostały w każdym przypadku 10 razy w celu uzyskania statystyki.
+Powyższe kroki wykonane zostały w zależności od liczby rekordów oraz liczby atrybutów zbioru. Liczba rekordów dla których przeprowadzone zostały testy mieściła się w zbiorze $ \{10, 20, 30, 40, 50, 100\} $. Obliczenia przeprowadzone zostały dla liczby atrybutów początkowo wynoszącej 4, 2 oraz 1. Celem było określenie czy, oraz na ile, ekstrakcja cech może pomóc w otrzymaniu wyższej skuteczności przy uczeniu maszynowym. Wszystkie obliczenia wykonane zostały w każdym przypadku 10 razy w celu uzyskania odpowiedniej statystyki wyników.
 
 \subsubsection{Stworzone rozwiązanie}
 Stworzony system składał się z komponentów takich jak Main, Optimizer oraz Configuration. Podobnie jak w eksperymencie opisanym w podrozdziale \ref{cvChapter} były odpowiedzialne kolejno za zadania uruchomienia głównego programu, optymalizacji parametrów modelu oraz konfigurację. Dodatkowo, w komponencie Main, znajduję się logika programu odpowiedzialna za redukcję wymiarowości zbioru danych. Także i w tym przypadku wykonywanie całej procedury dla różnych przypadków trwało dość długo tj. od kilku do kilkunastu godzin, co stanowiło motywację do wykorzystania wielowątkowości.
 
 \subsubsection{Wyniki}
-Wyniki dla obliczeń przeprowadzonych dla liczby rekordów wynoszącej 300 zostały na rysunku \ref{fe_300}, natomiast dla liczby rekordów wynoszącej 600 na rysunku \ref{fe_600}. W tabeli \ref{table:bestFE} można odczytać skuteczność klasyfikacji dla konkretnej metody bez ekstrakcji cech oraz przy użyciu ekstrakcji cech w zależności od wybranej metody ekstrakcji od liczby wykorzystanych do uczenia rekordów. Tabela \ref{table:averageFE} natomiast, prezentuje średnią poprawę skuteczności klasyfikacji w zależności od wykorzystanej metody oraz liczby rekordów.
+Zbiorcze wyniki dla różnej ilości wykorzystanych danych zostały przedstawione w tabeli \ref{table:fxTable} oraz na rysunku \ref{extractionSummary}. Dodatkowo, na rysunku \ref{showMeIris} przedstawiony został zbiór danych \textit{iris} pod redukcji do dwóch wymiarów oraz do jednego wymiaru.
 
-\definecolor{Gray}{gray}{0.8}
-\definecolor{White}{gray}{1}
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.45]{res/showMeIris.png}
+\caption[Caption for LOF]{Zbiór danych \textit{iris} po przeprowadzeniu ekstrakcji cech\label{showMeIris}}
+\end{figure} 
 
-\begin{table}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\tiny
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Skuteczność & Liczba cech & Liczba rekordów & metoda ekstrakcji & algorytm \\
-\hline
-\rowcolor{Gray}
-$8.7 \% \pm 0.9 \%$ & $3$ & $ 300 $ & PCA & ann \\
-\hline
-\rowcolor{Gray}
-$2.1 \% \pm 0.2 \%$ & $64$ & $ 300 $ & - & ann \\
-\hline
-\rowcolor{White}
-$9.0 \% $ & $3$ & $ 300 $ & PCA & svm \\
-\hline
-\rowcolor{White}
-$2.0 \% $ & $64$ & $ 300 $ & - & svm \\
-\hline
-\rowcolor{Gray}
-$10.6 \% \pm 0.4 \%$ & $3$ & $ 300 $ & PCA & forest \\
-\hline
-\rowcolor{Gray}
-$3.3 \% \pm 0.2 \%$ & $64$ & $ 300 $ & - & forest \\
-\hline
-\rowcolor{White}
-$11.4 \% \pm 0.2 \%$ & $3$ & $ 300 $ & PCA & tree \\
-\hline
-\rowcolor{White}
-$5.2 \% \pm 0.2 \%$ & $64$ & $ 300 $ & - & tree \\
-\hline
-\rowcolor{Gray}
-$28.5 \% \pm 2.3 \%$ & $1$ & $ 300 $ & LDA & ann \\
-\hline
-\rowcolor{Gray}
-$21.3 \% \pm 0.4 \%$ & $64$ & $ 300 $ & - & ann \\
-\hline
-\rowcolor{White}
-$27.0 \% $ & $4$ & $ 300 $ & LDA & svm \\
-\hline
-\rowcolor{White}
-$20.0 \% $ & $64$ & $ 300 $ & - & svm \\
-\hline
-\rowcolor{Gray}
-$30.8 \% \pm 1.4 \%$ & $1$ & $ 300 $ & LDA & forest \\
-\hline
-\rowcolor{Gray}
-$20.5 \% \pm 4.3 \%$ & $64$ & $ 300 $ & - & forest \\
-\hline
-\rowcolor{White}
-$31.5 \% \pm 0.4 \%$ & $1$ & $ 300 $ & LDA & tree \\
-\hline
-\rowcolor{White}
-$17.9 \% \pm 1.1 \%$ & $64$ & $ 300 $ & - & tree \\
-\hline
-\rowcolor{Gray}
-$72.2 \% \pm 3.3 \%$ & $5$ & $ 600 $ & PCA & ann \\
-\hline
-\rowcolor{Gray}
-$46.2 \% \pm 1.4 \%$ & $64$ & $ 600 $ & - & ann \\
-\hline
-\rowcolor{White}
-$68.5 \%$ & $5$ & $ 600 $ & PCA & svm \\
-\hline
-\rowcolor{White}
-$50.0\%$ & $64$ & $ 600 $ & - & svm \\
-\hline
-\rowcolor{Gray}
-$64.4 \%\pm 1.8\%$ & $5$ & $ 600 $ & PCA & forest \\
-\hline
-\rowcolor{Gray}
-$40.1 \%\pm 5.7\%$ & $64$ & $ 600 $ & - & forest \\
-\hline
-\rowcolor{White}
-$64.4 \%\pm 1.7\%$ & $5$ & $ 600 $ & PCA & tree \\
-\hline
-\rowcolor{White}
-$51.9 \% \pm 2.8 \%$ & $64$ & $ 600 $ & - & tree \\
-\hline
-\rowcolor{Gray}
-$73.0\%\pm 1.0\%$ & $3$ & $ 600 $ & LDA & ann \\
-\hline
-\rowcolor{Gray}
-$27.5 \%\pm 1.3\%$ & $64$ & $ 600 $ & - & ann \\
-\hline
-\rowcolor{White}
-$74.0\%$ & $3$ & $ 600 $ & LDA & svm \\
-\hline
-\rowcolor{White}
-$27.0\%$ & $64$ & $ 600 $ & - & svm \\
-\hline
-\rowcolor{Gray}
-$70.4 \%\pm 2.3\%$ & $3$ & $ 600 $ & LDA & forest \\
-\hline
-\rowcolor{Gray}
-$26.4 \%\pm 6.2\%$ & $64$ & $ 600 $ & - & forest \\
-\hline
-\rowcolor{White}
-$72.1 \%\pm 1.1\%$ & $3$ & $ 600 $ & LDA & tree \\
-\hline
-\rowcolor{White}
-$34.7 \%\pm 5.3\%$ & $64$ & $ 600 $ & - & tree \\
-\hline
-
- \end{tabular}
- \caption{Najlepsze uzyskane wyniki modeli uczonych przy wykorzystaniu zbioru danych po redukcji cech w porównaniu do modeli uczonych przed wykorzystaniem ekstrakcji cech} \label{table:bestFE}
-\end{table}
-
-
-\begin{table}[]
-\centering
-
-\begin{tabular}{llllll}
-                                                         &                                                              & \multicolumn{2}{c}{}                                                                                                                                    &  &  \\ \cline{3-4}
-                                                         & \multicolumn{1}{l|}{}                                        & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} PCA}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} LDA}} &  &  \\ \cline{2-4}
-\multicolumn{1}{c|}{}                                    & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}300 rekordów} & \multicolumn{1}{l|}{$7,27 \%$}                                           & \multicolumn{1}{l|}{$9,53\%$}                                            &  &  \\ \cline{2-4}
-\multicolumn{1}{c|}{\multirow{-2}{*}{}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}600 rekordów} & \multicolumn{1}{l|}{$20,32 \%$}                                            & \multicolumn{1}{l|}{$43,47\%$}                                           &  &  \\ \cline{2-4}
-                                                         &                                                              &                                                                                     &                                                                                     &  & 
+Liczba rekordów       & Metoda                  & Liczba atrybutów & Wynik & Poprawa \\ \hline
+\multirow{12}{*}{10}  & \multirow{3}{*}{ann}    & 1                & $ 93,06  \pm  6,54 \% $ & \multirow{3}{*}{20.84\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 91,94 \pm 7,71 \% $   & \\ \cline{3-4} 
+                      &                         & 4                & $ 72,22 \pm 12,61 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 97,5 \pm 0 \% $        & \multirow{3}{*}{3.89 \%} \\ \cline{3-4} 
+                      &                         & 2                & $ 97,5 \pm 0 \% $       &\\ \cline{3-4} 
+                      &                         & 4                & $ 93,61 \pm 5,41 \% $   &\\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 92,5 \pm 9,35 \% $    & \multirow{3}{*}{9.44\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 63,61 \pm 13,8 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 83,06 \pm 11,95 \% $ & \\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{16.67\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 85 \pm  14,14 \% $    & \\ \cline{3-4} 
+                      &                         & 4                & $ 80,83 \pm 11,43 \% $  &\\ \hline
+\multirow{12}{*}{20}  & \multirow{3}{*}{ann}    & 1                & $ 92,22 \pm 0,79 \% $   & \multirow{3}{*}{4.72\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 92,22 \pm 0,79 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 87,5 \pm 9,35 \% $    &\\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 92,5 \pm 0 \% $       & \multirow{3}{*}{-} \\ \cline{3-4} 
+                      &                         & 2                & $ 92,5 \pm 0 \% $       &\\ \cline{3-4} 
+                      &                         & 4                & $ 97,5 \pm 0 \% $       &\\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 88,89 \pm 10,21 \% $  & \multirow{3}{*}{-} \\ \cline{3-4} 
+                      &                         & 2                & $ 91,94 \pm 1,57 \% $  & \\ \cline{3-4} 
+                      &                         & 4                & $ 95 \pm 0 \% $         &\\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 92,5 \pm 0 \% $       & \multirow{3}{*}{-} \\ \cline{3-4} 
+                      &                         & 2                & $ 92,5 \pm 0 \% $       &\\ \cline{3-4} 
+                      &                         & 4                & $ 93,33 \pm 2,36 \% $   &\\ \hline
+\multirow{12}{*}{30}  & \multirow{3}{*}{ann}    & 1                & $ 82,78 \pm 3,42 \% $   & \multirow{3}{*}{2.78\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 87,22 \pm 2,19 \% $  & \\ \cline{3-4} 
+                      &                         & 4                & $ 84,44 \pm 11,77 \% $  &\\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 95 \pm 0 \% $        & \multirow{3}{*}{6.95\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 95,28 \pm 0,79 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 88,33 \pm 6,97 \% $   &\\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 95 \pm 0 \%  $        & \multirow{3}{*}{6.39\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 86,11 \pm 5,41 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 88,61 \pm 2,08 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 95 \pm 0 \%  $       & \multirow{3}{*}{5\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 95 \pm 0 \%  $       &\\ \cline{3-4} 
+                      &                         & 4                & $ 90 \pm  3,54 \% $     & \\ \hline
+\multirow{12}{*}{40}  & \multirow{3}{*}{ann}    & 1                & $ 92,22 \pm 0,79 \% $   & \multirow{3}{*}{-} \\ \cline{3-4} 
+                      &                         & 2                & $ 88,61 \pm 1,71 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 96,67 \pm 1,67 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 94,44 \pm 1,04 \% $   & \multirow{3}{*}{0.55\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 96,94 \pm 1,96 \% $  & \\ \cline{3-4} 
+                      &                         & 4                & $ 96,39 \pm 1,24 \% $   &\\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 95 \pm 0 \% $        & \multirow{3}{*}{1.94\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 88,33 \pm 3,91 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 93,06 \pm 1,96 \% $   &\\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 95 \pm 0 \% $         & \multirow{3}{*}{7.5\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 97,5 \pm 0 \% $      &\\ \cline{3-4} 
+                      &                         & 4                & $ 90 \pm 0 \%   $     & \\ \hline
+\multirow{12}{*}{50}  & \multirow{3}{*}{ann}    & 1                & $ 94,72 \pm 7,86 \% $   & \multirow{3}{*}{-} \\ \cline{3-4} 
+                      &                         & 2                & $ 93,06 \pm 3,49 \% $  & \\ \cline{3-4} 
+                      &                         & 4                & $ 97,5 \pm 1,18 \% $    &\\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{0 \%} \\ \cline{3-4} 
+                      &                         & 2                & $ 97,5 \pm 0 \% $     &  \\ \cline{3-4} 
+                      &                         & 4                & $ 97,5 \pm 0 \% $       & \\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{3.06\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 86,67 \pm 11,37 \% $ & \\ \cline{3-4} 
+                      &                         & 4                & $ 94,44 \pm 2,58 \% $   &\\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{2.5\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 97,5 \pm 0 \% $      & \\ \cline{3-4} 
+                      &                         & 4                & $ 95 \pm 0 \%   $      &\\ \hline
+\multirow{12}{*}{100} & \multirow{3}{*}{ann}    & 1                & $ 95 \pm 0 \%   $      & \multirow{3}{*}{$-$} \\ \cline{3-4} 
+                      &                         & 2                & $ 96,39 \pm 1,24 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 96,67 \pm 1,18 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{svm}    & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{3.88\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 99,44 \pm 1,04 \% $  & \\ \cline{3-4} 
+                      &                         & 4                & $ 95,56 \pm 1,04 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{forest} & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{2.22\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 96,67 \pm 2,36 \% $   &\\ \cline{3-4} 
+                      &                         & 4                & $ 95,28 \pm 0,79 \% $  & \\ \cline{2-5} 
+                      & \multirow{3}{*}{tree}   & 1                & $ 97,5 \pm 0 \% $       & \multirow{3}{*}{1.67\%} \\ \cline{3-4} 
+                      &                         & 2                & $ 97,5 \pm 0 \% $       &\\ \cline{3-4} 
+                      &                         & 4                & $ 95,83 \pm 1,18 \% $   &\\ \hline
 \end{tabular}
-\caption{Średnia poprawa skuteczności klasyfikacji w zależności od liczby danych oraz metody ekstrakcji} \label{table:averageFE}
+\caption{Zestawienie skuteczności przy wykorzystaniu ekstrakcji cech przy użyciu różnej liczby rekordów, różne liczby atrybutów w zależności od wybranej metody}
+\label{table:fxTable}
+
 \end{table}
 
 
-\newcommand{\fesize}{0.45}
-
-\begin{figure}
+\begin{figure}[ht!]
 \centering
-\begin{minipage}{.5\textwidth}
-
-\centering
-\includegraphics[scale=\fesize]{res/digits_300_all_LinearDiscriminantAnalysis.pdf}
-
-  
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-
-\centering
-\includegraphics[scale=\fesize]{res/digits_300_all_PCA.pdf}
-  
-\end{minipage}
-\caption[Caption for LOF]{Zależność skuteczności od liczby wykorzystanych atrybutów przy użyciu 300 rekordów do stworzenia systemu\label{fe_300}}
-\end{figure}
-
-\begin{figure}
-\centering
-\begin{minipage}{.5\textwidth}
-
-\centering
-\includegraphics[scale=\fesize]{res/digits_600_all_LinearDiscriminantAnalysis.pdf}
-
-  
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-
-\centering
-\includegraphics[scale=\fesize]{res/digits_600_all_PCA.pdf}
-  
-\end{minipage}
-\caption[Caption for LOF]{Zależność skuteczności od liczby wykorzystanych atrybutów przy użyciu 600 rekordów do stworzenia systemu\label{fe_600}}
-\end{figure}
-
+\includegraphics[scale=0.45]{res/extractionSummary.png}
+\caption[Caption for LOF]{Porwóananie skuteczności modelu dla różnych algorytmów w zależności od liczby atrybutów oraz ilości wykorzystanych do uczenia danych\label{extractionSummary}}
+\end{figure} 
 
 
 \subsubsection{Wnioski}
+Analizując jako pierwszy wykres na rysunku \ref{showMeIris}, można zauważyć, że dane ze zbioru \textit{iris} są prawie separowalne liniowo. Stwarza to możliwość efektywnego wykorzystania metody LDA w celu ekstrakcji cech. Trzeba jednak pamiętać, że tego typu zbiory raczej nie są zbyt często spotykane w rzeczywistości. Wykres przedstawiający opracowywane dane w jednym wymiarze pokazuje, że transformacja do takiej przestrzeni nie stanowi wciąż problemu jeśli chodzi o realizację zadania klasyfikacji w tym przypadku. Posiadanie danych o mniejszej ilości atrybutów pozwala użyć prostszych modeli, co z kolei przeciwdziała przeuczeniu, które jest znacznym problemem w przypadku niskiej ilości danych. W przypadku posiadania tylko 10 rekordów w celu przeprowadzenia uczenia, można zauważyć jak bardzo pomocna okazuje się tutaj ekstrakcja cech. Poprawa skuteczności została odnotowana dla wszystkich metod i to bardzo w znacznym stopniu w przypadku algorytmu drzewa decyzyjnego oraz sztucznych sieci neuronowych, bo aż $16,67 \%$ w pierwszym oraz $20,84 \%$ przypadku drugim (patrz tabela \ref{table:fxTable}). Dla lasu drzew decyzyjnych oraz maszyny wektorów wspierających poprawa wynosiła kolejno $9,44 \%$ oraz $3,89 \%$, co wciąż jest zadowalającym wynikiem. Przy większej ilości danych, poprawa skuteczności nie zawsze występowała, ale wciąż w większości przypadków wyniki uzyskiwane po przeprowadzeniu ekstrakcji były lepsze (poprawa została odnotowana w 13 na 20 pozostałych przypadków). Podsumowując, ekstrakcja cech stanowi bardzo dobry sposób na optymalizację uczenia maszynowego pod kątem ilości danych, lecz wydaje się, że nie może być bardzo często stosowana ze względu na wymóg liniowej separowalność danych.
 
 \subsection{Ekstrakcja cech przy użyciu ,,wiedzy''}
 \subsubsection{Opis problemu}
