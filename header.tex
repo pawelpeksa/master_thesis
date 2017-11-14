@@ -19,8 +19,19 @@
 \usepackage[toc,page]{appendix}
 \usepackage{icomma}
 \usepackage{longtable}
+\usepackage[hang,flushmargin]{footmisc}
 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% footnote spacing
+\addtolength{\footnotesep}{3mm} % change to 1mm
+
+%spacing between footnotes and line above it
+
+\makeatletter
+\def\footnoterule{\kern-8\p@
+  \hrule \@width 2in \kern 1\p@} % the \hrule is .4pt high
+\makeatother
 
 \addto\captionspolish{%
   \renewcommand{\tablename}{Tabela}%
