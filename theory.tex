@@ -140,19 +140,27 @@ Najłatwiej objaśnić działanie głębokich sieci neuronowych na~podstawie prz
 \end{figure}
 
 \subsubsection[Konwolucyjne sieci neuronowe]{Konwolucyjne sieci neuronowe \footnote{Niniejszy rozdział został napisany na~podstawie pracy\cite{nielsen}.}}
-Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neuronowych. Znajdują swoje zastosowanie wszędzie, gdzie możemy zetknąć się z~potrzebą analizy obrazów. Ich nazwa wynika z~faktu, iż~bazują one na~operacji konwolucji. W~przypadku tradycyjnych sieci neuronowych, w~sytuacji analizy obrazu bez ówczesnej ekstrakcji cech, należałoby podać na~każde wejście sieci wartość pojedynczego piksela. Problemem tego podejścia jest to, że~nie jest brana pod~uwagę przestrzenna natura obrazu. Każde wejście sieci traktowane jest indywidualnie i~nie jest ważne jego położenie na~obrazie.  Konwolucyjne sieci neuronowe wykorzystują przestrzenną naturę obrazu. Ich architektura jest do~tego dostosowana. Głównymi elementem sieci tego typu odróżniającymi je od~tradycyjnych jest istnienie warstw konwolucyjnych. W~przypadku tradycyjnych sieci neuronowych, zazwyczaj wyobrażamy sobie warstwę jako pojedyncza linie neuronów. Dla warstwy konwolucyjnej, bardziej naturalne jest jej przedstawienie w~dwóch wymiarach.
+Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neuronowych. Znajdują swoje zastosowanie wszędzie, gdzie możemy zetknąć się z~potrzebą analizy obrazów. Ich nazwa wynika z~faktu, iż~bazują one na~operacji konwolucji. W~przypadku tradycyjnych oraz głębokich sieci neuronowych, w~sytuacji analizy obrazu bez ówczesnej ekstrakcji cech, należałoby podać na~każde wejście sieci wartość pojedynczego piksela. Problemem tego podejścia jest to, że~nie jest brana pod~uwagę przestrzenna natura obrazu. Każde wejście sieci traktowane jest indywidualnie bez względu na jego położenie na~obrazie.  Konwolucyjne sieci neuronowe wykorzystują przestrzenną naturę obrazu. Ich architektura jest do~tego dostosowana. Cechą pozwalającą wyróżnić sieci tego typu spośród głębokich sieci neuronowych jest istnienie warstw konwolucyjnych. W~przypadku tradycyjnych sieci neuronowych, zazwyczaj wyobrażamy sobie warstwę jako pojedyncza linie neuronów. Dla warstwy konwolucyjnej, bardziej naturalne jest jej przedstawienie w~dwóch wymiarach. Wartością każdego neuronu wejściowego jest wynik operacji konwolucji przeprowadzonej na obrazie wejściowym.  Nowa wartość piksela obrazu po przeprowadzeniu konwolucji jest wyliczana na podstawie wartości tego piksela oraz wartości pikseli z nim sąsiadujących. Zgodnie z wartościami w masce każda wartość piksela jest odpowiednio ważona. Wartość wynikowa jest sumą iloczynów pikseli obrazu wejściowego oraz odpowiadającym im wartościom w masce. Operacja konwolucji przedstawiona została na rysunku \ref{exConvolution}. W~celu otrzymania wszystkich wejść należy ,,przesuwać'' maskę po~całym obrazie. W~zależności od~rozmiaru maski (zazwyczaj 3x3, 5x5 lub~7x7) otrzymujemy odpowiednią liczbę wejść sieci. Operacja ta została przedstawiona na~rysunku \ref{cnn1}. Wagi neuronów w warstwach konwolucyjnych odpowiadają odpowiednio wartościom wykorzystywanym w masce oraz są wspólne dla neuronów wejściowych otrzymanych przy użyciu konkretnej maski. Sprawia to, że pojedyncza maska docelowo ma służyć do wykrywania jednej cechy na obrazie.  Jedna cecha na~jedną warstwę, to byłoby jednak za~mało, więc w jednej warstwie możemy wykorzystać dowolną liczbę masek. Ostatecznie najlepiej przedstawić pojedyncza warstwę konwolucyjną w~trzech wymiarach, co można zobaczyć na~rysunku \ref{cnn2}.
+
+\begin{figure}[ht!]
+\centering
+% obrazek pobrany z 
+\includegraphics[scale=0.5]{res/exConvolution2.jpg}
+\caption[Caption for LOF]{Operacja konwolucji przedstawiona graficznie dla maski o rozmiarach 3x3. Źródło:\url{https://goo.gl/PA2EJy}\label{exConvolution}} 
+\end{figure}
+
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/cnn1.png}
 \caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w dwóch wymiarach. Źródło:\cite{nielsen}\label{cnn1}} 
 \end{figure}
-Wartością każdego neuronu wejściowego jest wynik operacji konwolucji. W~celu otrzymania wszystkich wejść należy ,,przesuwać'' maskę po~całym obrazie. W~zależności od~rozmiaru maski (zazwyczaj 3x3, 5x5 lub~7x7) otrzymujemy odpowiednią liczbę wejść sieci. Operacja ta została przedstawiona na~rysunku \ref{cnn1}. Należy wspomnieć, że~wagi wszystkich neuronów są wspólne. Można stwierdzić, że~w~ten sposób pierwsza warstwa służy do~wykrycia dokładnie jednej cechy obrazu. Jedna cecha na~jedną warstwę, to byłoby jednak za~mało, więc ostatecznie najlepiej przedstawić pojedyncza warstwę konwolucyjną w~trzech wymiarach, co można zobaczyć na~rysunku \ref{cnn2}.
+
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/cnn2.png}
-\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach. Źródło:\cite{nielsen}\label{cnn2}} 
+\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach przy liczbnie masek równej 3. Źródło:\cite{nielsen}\label{cnn2}} 
 \end{figure}
 \noindent
 W~sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także warstwy typu \textit{pooling}, które~pozwalają na~pomniejszenie obrazu, co z~kolei redukuje w~pewnym stopniu koszty związane z~obliczeniami. Jedną z~podstawowych wykorzystywanych technik jest tzw. \textit{max-pooling}. Ponownie używając maski dowolnego rozmiaru (zazwyczaj 2x2) ,,przechodzimy'' po~całym obrazie, lecz tym razem wybierając do~warstwy po~operacji \textit{poolingu} piksel o~najwyższej wartości.
