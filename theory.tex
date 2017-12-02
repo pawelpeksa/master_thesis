@@ -27,7 +27,7 @@ Przeuczenie (ang. \textit{overfitting}) jest jednym z~głównych problemów na~k
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.8]{res/overfitting.png}
-\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji. Źródło:\url{http://mlwiki.org/index.php/Overfitting}\label{overfitting}} 
+\caption[Caption for LOF]{Problem przeuczenia oraz niedouczenia na przykładzie klasyfikacji, źródło: \url{https://goo.gl/13vmdA}\label{overfitting}} 
 \end{figure}
 
 \subsection{Wykorzystane algorytmy}
@@ -69,13 +69,13 @@ Maszyna wektorów wspierających (ang. \textit{support vector machine, SVM}) jes
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.8]{res/svm1.png}
-\caption[Caption for LOF]{Rysunek przedstawiający ideę maszyny wektorów wspierających. Źródło:\cite{svm2} \label{svmIdea}}
+\caption[Caption for LOF]{Rysunek przedstawiający ideę maszyny wektorów wspierających, źródło:\cite{svm2} \label{svmIdea}}
 \end{figure} 
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.6]{res/svm2.png}
-\caption[Caption for LOF]{Rysunek przedstawiający ideę transformowania danych do przestrzeni w której są one liniowo separowalne. Źródło:\cite{svmKernel} \label{svmKernel}}
+\caption[Caption for LOF]{Rysunek przedstawiający ideę transformowania danych do przestrzeni w której są one liniowo separowalne, źródło:\cite{svmKernel} \label{svmKernel}}
 \end{figure} 
 
 \subsubsection[Tradycyjne sieci neuronowe]{Tradycyjne sieci neuronowe \footnote{Niniejszy podrozdział powstał na~podstawie pracy \cite{tadeusiewicz}. }}
@@ -90,7 +90,7 @@ h=max(0,a),
 \begin{figure}[ht!]
 \centering
 \includegraphics{res/neuron.png}
-\caption[Caption for LOF]{Matematyczny model neuronu. Źródło:\url{https://goo.gl/9gar57}\label{neuron}}
+\caption[Caption for LOF]{Matematyczny model neuronu, źródło: \url{https://goo.gl/9gar57}\label{neuron}}
 \end{figure} 
 
 \noindent
@@ -107,7 +107,7 @@ W~każdej warstwie może znajdować się dowolna ilość neuronów. Przykład si
 \centering
 % obrazek pobrany z 
 \includegraphics{res/exampleNet.png}
-\caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa. Źródło:{https://goo.gl/TouzPn}\label{net}} 
+\caption[Caption for LOF]{Przykładowa jednokierunkowa sieć neuronowa, źródło: \url{https://goo.gl/TouzPn}\label{net}} 
 \end{figure}
 \noindent
 W~każdej iteracji uczenia sieci, na~wejście podawany są dane. W~zależności od~odpowiedzi otrzymanej przez~sieć przeprowadzana jest poprawa wag. Po~przeprowadzeniu uczenia, sieć powinna ustalić wagi takie, aby~poprawnie odpowiadać na~kolejne sygnały wejściowe. W~ogólności mówimy o~minimalizacji błędu sieci $Q$ w~zależności od~wag sieci. W~równaniu aktualizującym wagi występuję również współczynnik $\eta$, który~jest tzw. współczynnikiem uczenia, który~zmniejsza wprowadzane poprawy wag sieci. Poprawka dla wagi konkretnego połączenia neuronowego z~wagą $w_i$ definiujemy jako:
@@ -135,7 +135,7 @@ Najłatwiej objaśnić działanie głębokich sieci neuronowych na~podstawie prz
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.5]{res/dnn1.png}
-\caption[Caption for LOF]{Różnica pomiędzy tradycyjnymi sieciami neuronowymi oraz głębokimi sieciami neuronowymi w kontekście ekstrakcji cech. Źródło: \url{https://goo.gl/qPVrhb}\label{dnnDiff}} 
+\caption[Caption for LOF]{Różnica pomiędzy tradycyjnymi sieciami neuronowymi oraz głębokimi sieciami neuronowymi w kontekście ekstrakcji cech, źródło: \url{https://goo.gl/qPVrhb}\label{dnnDiff}} 
 \end{figure}
 
 \subsubsection[Konwolucyjne sieci neuronowe]{Konwolucyjne sieci neuronowe \footnote{Niniejszy rozdział został napisany na~podstawie pracy\cite{nielsen}.}}
@@ -145,21 +145,21 @@ Konwolucyjne sieci neuronowe są najpopularniejszym typem głębokich sieci neur
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.5]{res/exConvolution2.jpg}
-\caption[Caption for LOF]{Operacja konwolucji przedstawiona graficznie dla maski o rozmiarach 3x3. Źródło:\url{https://goo.gl/PA2EJy}\label{exConvolution}} 
+\caption[Caption for LOF]{Operacja konwolucji przedstawiona graficznie dla maski o rozmiarach 3x3, źródło: \url{https://goo.gl/PA2EJy}\label{exConvolution}} 
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/cnn1.png}
-\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w dwóch wymiarach. Źródło:\cite{nielsen}\label{cnn1}} 
+\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w dwóch wymiarach, źródło:\cite{nielsen}\label{cnn1}} 
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/cnn2.png}
-\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach przy liczbnie masek równej 3. Źródło:\cite{nielsen}\label{cnn2}} 
+\caption[Caption for LOF]{Warstwa wejściowa konwolucyjnej sieci neuronowej przedstawiona w trzech wymiarach przy liczbnie masek równej 3, źródło:\cite{nielsen}\label{cnn2}} 
 \end{figure}
 \noindent
 W~sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także warstwy typu \textit{pooling}, które~pozwalają na~pomniejszenie obrazu, co z~kolei redukuje w~pewnym stopniu koszty związane z~obliczeniami. Jedną z~podstawowych wykorzystywanych technik jest tzw. \textit{max-pooling}. Ponownie używając maski dowolnego rozmiaru (zazwyczaj 2x2) ,,przechodzimy'' po~całym obrazie, lecz tym razem do~kolejnej warstwy przekazywany jest piksel o~najwyższej wartości zamiast sumy ważonej.
@@ -167,7 +167,7 @@ W~sieciach konwolucyjnych, oprócz warstw konwolucyjnych, występują także war
 \centering
 % obrazek pobrany z 
 \includegraphics[scale=0.6]{res/pooling.png}
-\caption[Caption for LOF]{Warstwa typu \textit{pooling}. Źródło:\cite{nielsen}\label{pooling}} 
+\caption[Caption for LOF]{Warstwa typu \textit{pooling}, źródło:\cite{nielsen}\label{pooling}} 
 \end{figure}
 \noindent
 Po~warstwach konwolucyjnych oraz~typu \textit{pooling}, których ilość jest arbitralna, następuje przejście do~warstw w~pełni połączonych (ang. \textit{fully connected}) znanych z~tradycyjnych sieci neuronowych, gdzie dokonywana jest ostateczna klasyfikacja. Kompletna architektura sieci konwolucyjnej przedstawiona została na~rysunku~\ref{cnn3}.
@@ -176,7 +176,7 @@ Po~warstwach konwolucyjnych oraz~typu \textit{pooling}, których ilość jest ar
 \centering
 % obrazek pobrany z https://www.kernix.com/blog/a-toy-convolutional-neural-network-for-image-classification-with-keras_p14
 \includegraphics[scale=0.75]{res/cnn3.jpg}
-\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych. Źródło: \url{https://goo.gl/XC7hpQ}\label{cnn3}} 
+\caption[Caption for LOF]{Architektura konwolucyjnych sieci neuronowych, źródło: \url{https://goo.gl/XC7hpQ}\label{cnn3}} 
 \end{figure}
 
 
@@ -224,7 +224,7 @@ przy czym $T$ oraz~$N$ oznaczają kolejno wszystkie próbki pozytywne oraz~wszys
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/roc3.png}
-\caption[Caption for LOF]{Krzywa ROC. Źródło:\url{http://scikit-learn.org/stable/_images/sphx_glr_plot_roc_001.png}\label{roc}} 
+\caption[Caption for LOF]{Krzywa ROC, źródło: \url{https://goo.gl/Su21qo}\label{roc}} 
 \end{figure}
 
 
@@ -265,7 +265,7 @@ We wszystkich algorytmach uczenia maszynowego występują parametry, które~nale
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{res/cv.jpg}
-\caption[Caption for LOF]{Przykład walidacji krzyżowej. Źródło: \url{https://goo.gl/XihYL4}} \label{cv} 
+\caption[Caption for LOF]{Przykład walidacji krzyżowej, źródło: \url{https://goo.gl/XihYL4}} \label{cv} 
 \end{figure}
 
 
@@ -278,8 +278,8 @@ Analiza głównych składowych (ang. \textit{principal component analysis}, PCA)
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.5]{res/pcalda.png}
-\caption[Caption for LOF]{Porównanie ekstrakcji cech przy użyciu metody PCA oraz LDA. Wyraźnie widać, że po przeprowadzeniu ekstrakcji, w przypadku metody PCA, nie otrzymujemy danych będących liniowo separowalnych, co udaje się w przypadku wykorzystaniu LDA.} \label{pcaIsShit} 
+\includegraphics[scale=0.5]{res/pcaldaDesc.png}
+\caption[Caption for LOF]{Porównanie ekstrakcji cech przy użyciu metody PCA oraz LDA} \label{pcaIsShit} 
 \end{figure}
 
 
