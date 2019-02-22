@@ -1,7 +1,10 @@
-# master_thesis
-Master thesis. Topic:Optimalization of the machine learning algorithms for the low statistics training samples (Text in Polish)
+# Master thesis
 
-Realated repos with code:
+### Topic: Optimalization of the machine learning algorithms for the low statistics training samples
+
+**This repository contains only latex file with text of the thesis (in Polish).**
+
+### Realated repositories with code:
 
 Machine learning with higgs data:
 https://github.com/pawelpeksa/higgs_machinelearning
