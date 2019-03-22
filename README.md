@@ -1,6 +1,6 @@
 # Master thesis
 
-### Topic: Optimalization of the machine learning algorithms for the low statistics training samples
+### Topic: Optimisation of machine learning algorithms in case of small data amount
 
 **This repository contains only latex files with text of the thesis (in Polish).**
 
