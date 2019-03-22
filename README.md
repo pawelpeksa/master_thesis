@@ -2,7 +2,7 @@
 
 ### Topic: Optimalization of the machine learning algorithms for the low statistics training samples
 
-**This repository contains only latex file with text of the thesis (in Polish).**
+**This repository contains only latex files with text of the thesis (in Polish).**
 
 <br><br>
 
